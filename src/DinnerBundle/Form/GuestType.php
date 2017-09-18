@@ -36,7 +36,7 @@ class GuestType extends AbstractType
             ->add('paid')
             ->add('paidSeats')
             ->add('compSeats')
-            ->add('isBusiness', CheckboxType::class, ['label' => 'Business?'])
+            ->add('isBusiness', CheckboxType::class, ['label' => 'Business?', 'required' => false])
             ->add('doNotCall')
             ->add('note')
             ->add('previousAdCopy')

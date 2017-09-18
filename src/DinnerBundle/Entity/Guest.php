@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(name="guests")
  * @ORM\Entity(repositoryClass="DinnerBundle\Repository\GuestRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Guest
 {
