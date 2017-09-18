@@ -58,22 +58,6 @@ class GuestController extends Controller
     }
 
     /**
-     * Finds and displays a guest entity.
-     *
-     * @Route("/{id}", name="guest_show")
-     * @Method("GET")
-     */
-    public function showAction(Guest $guest)
-    {
-        $deleteForm = $this->createDeleteForm($guest);
-
-        return $this->render('guest/show.html.twig', array(
-            'guest' => $guest,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
      * Displays a form to edit an existing guest entity.
      *
      * @Route("/{id}/edit", name="guest_edit")

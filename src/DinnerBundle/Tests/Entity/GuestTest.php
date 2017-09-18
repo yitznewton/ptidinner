@@ -139,4 +139,15 @@ class GuestTest extends TestCase
 
         $this->assertEquals('Gold, Full', $this->guest->adsCurrent());
     }
+
+    /**
+     * @test
+     */
+    public function totalSeats()
+    {
+        $this->guest->paidSeats = 1;
+        $this->guest->compSeats = 2;
+
+        $this->assertEquals(3, $this->guest->totalSeats());
+    }
 }

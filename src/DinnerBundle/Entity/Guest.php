@@ -94,9 +94,9 @@ class Guest
     /**
      * @var float
      *
-     * @ORM\Column(name="pledge_2016", type="float", length=8, scale=2)
+     * @ORM\Column(name="pledge_current", type="float", length=8, scale=2)
      */
-//    public $pledge2016;
+    public $pledge2016;
 
     /**
      * @var float
@@ -104,6 +104,14 @@ class Guest
      * @ORM\Column(type="float", length=8, scale=2)
      */
     public $paid;
+
+    /**
+     * @return float
+     */
+    public function balance()
+    {
+        return $this->pledgeCurrent() - $this->paid;
+    }
 
     /**
      * @var string
@@ -190,6 +198,14 @@ class Guest
     public $compSeats = 0;
 
     /**
+     * @return int
+     */
+    public function totalSeats()
+    {
+        return $this->paidSeats + $this->compSeats;
+    }
+
+    /**
      * @var string
      *
      * @ORM\Column(name="previous_ad_copy", type="text", nullable=true)
@@ -252,7 +268,7 @@ class Guest
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function pledgeCurrent()
     {

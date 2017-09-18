@@ -58,22 +58,6 @@ class AdController extends Controller
     }
 
     /**
-     * Finds and displays a ad entity.
-     *
-     * @Route("/{id}", name="ad_show")
-     * @Method("GET")
-     */
-    public function showAction(Ad $ad)
-    {
-        $deleteForm = $this->createDeleteForm($ad);
-
-        return $this->render('ad/show.html.twig', array(
-            'ad' => $ad,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
      * Displays a form to edit an existing ad entity.
      *
      * @Route("/{id}/edit", name="ad_edit")
