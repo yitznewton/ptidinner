@@ -2,7 +2,11 @@
 
 namespace DinnerBundle\Form;
 
+use DinnerBundle\Entity\Honoree;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +17,31 @@ class GuestType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('ykpId')->add('familyName')->add('title')->add('herName')->add('hisName')->add('note')->add('pledge2013')->add('pledge2014')->add('pledge2015')->add('paid')->add('streetAddress')->add('city')->add('state')->add('zip')->add('country')->add('phone')->add('mobile')->add('fax')->add('email')->add('referredBy')->add('paidSeats')->add('compSeats')->add('previousAdCopy')->add('previousAdTypes')->add('isBusiness')->add('doNotCall')->add('ads')->add('honorees');
+        $builder
+            ->add('familyName')
+            ->add('title')
+            ->add('hisName')
+            ->add('herName')
+            ->add('streetAddress')
+            ->add('city')
+            ->add('state')
+            ->add('zip')
+            ->add('country')
+            ->add('phone')
+            ->add('mobile')
+            ->add('fax')
+            ->add('email')
+            ->add('referredBy')
+            ->add('pledge2016', NumberType::class, ['label' => 'Current pledge'])
+            ->add('paid')
+            ->add('paidSeats')
+            ->add('compSeats')
+            ->add('isBusiness', CheckboxType::class, ['label' => 'Business?'])
+            ->add('doNotCall')
+            ->add('note')
+            ->add('previousAdCopy')
+            ->add('honorees', EntityType::class, ['class' => Honoree::class, 'label' => 'Honoree affiliation', 'multiple' => true])
+            ;
     }
     
     /**

@@ -45,23 +45,23 @@ class Guest
     /**
      * @var string
      *
-     * @ORM\Column(name="title", length=25)
+     * @ORM\Column(name="title", length=25, nullable=true)
      */
-    public $title = '';
+    public $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="her_name", length=50)
+     * @ORM\Column(name="her_name", length=50, nullable=true)
      */
-    public $herName = '';
+    public $herName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="his_name", length=50)
+     * @ORM\Column(name="his_name", length=50, nullable=true)
      */
-    public $hisName = '';
+    public $hisName;
 
     /**
      * @var string
@@ -82,28 +82,28 @@ class Guest
      *
      * @ORM\Column(name="pledge_2014", type="float", length=8, scale=2)
      */
-    public $pledge2014;
+    public $pledge2014 = 0.0;
 
     /**
      * @var float
      *
      * @ORM\Column(name="pledge_2015", type="float", length=8, scale=2)
      */
-    public $pledge2015;
+    public $pledge2015 = 0.0;
 
     /**
      * @var float
      *
      * @ORM\Column(name="pledge_current", type="float", length=8, scale=2)
      */
-    public $pledge2016;
+    public $pledge2016 = 0.0;
 
     /**
      * @var float
      *
      * @ORM\Column(type="float", length=8, scale=2)
      */
-    public $paid;
+    public $paid = 0.0;
 
     /**
      * @return float
@@ -116,30 +116,30 @@ class Guest
     /**
      * @var string
      *
-     * @ORM\Column(name="street_address")
+     * @ORM\Column(name="street_address", nullable=true)
      */
-    public $streetAddress = '';
+    public $streetAddress;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="city", length=50)
+     * @ORM\Column(name="city", length=50, nullable=true)
      */
-    public $city = '';
+    public $city;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="state", length=2)
+     * @ORM\Column(name="state", length=2, nullable=true)
      */
-    public $state = '';
+    public $state;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="zip", length=9)
+     * @ORM\Column(name="zip", length=9, nullable=true)
      */
-    public $zip = '';
+    public $zip;
 
     /**
      * @var string
@@ -215,14 +215,14 @@ class Guest
     /**
      * @var string
      *
-     * @ORM\Column(name="ads_previous", length=100)
+     * @ORM\Column(name="ads_previous", length=100, nullable=true)
      */
     public $previousAdTypes;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="honoree_string", length=50)
+     * @ORM\Column(name="honoree_string", length=50, nullable=true)
      */
     public $honoreeString;
 
