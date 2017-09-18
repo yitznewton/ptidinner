@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ads list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Copy</th>
+                <th>Note</th>
+                <th>Gueststring</th>
+                <th>Typeaccession</th>
+                <th>Senttoprinter</th>
+                <th>Prooffromprinter</th>
+                <th>Proofapproved</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ad in ads %}
+            <tr>
+                <td><a href="{{ path('ad_show', { 'id': ad.id }) }}">{{ ad.id }}</a></td>
+                <td>{{ ad.copy }}</td>
+                <td>{{ ad.note }}</td>
+                <td>{{ ad.guestString }}</td>
+                <td>{{ ad.typeAccession }}</td>
+                <td>{% if ad.sentToPrinter %}{{ ad.sentToPrinter|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if ad.proofFromPrinter %}{{ ad.proofFromPrinter|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if ad.proofApproved %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ad_show', { 'id': ad.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ad_edit', { 'id': ad.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ad_new') }}">Create a new ad</a>
+        </li>
+    </ul>
+{% endblock %}

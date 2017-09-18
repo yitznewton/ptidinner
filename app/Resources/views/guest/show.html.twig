@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Guest</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ guest.id }}</td>
+            </tr>
+            <tr>
+                <th>Familyname</th>
+                <td>{{ guest.familyName }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ guest.title }}</td>
+            </tr>
+            <tr>
+                <th>Hername</th>
+                <td>{{ guest.herName }}</td>
+            </tr>
+            <tr>
+                <th>Hisname</th>
+                <td>{{ guest.hisName }}</td>
+            </tr>
+            <tr>
+                <th>Streetaddress</th>
+                <td>{{ guest.streetAddress }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ guest.city }}</td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td>{{ guest.state }}</td>
+            </tr>
+            <tr>
+                <th>Zip</th>
+                <td>{{ guest.zip }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('guest_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('guest_edit', { 'id': guest.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
