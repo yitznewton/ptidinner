@@ -106,6 +106,14 @@ class Ad
     }
 
     /**
+     * @return int
+     */
+    public function price()
+    {
+        return $this->adType->price;
+    }
+
+    /**
      * @return string
      */
     private function truncatedCopy()
