@@ -24,6 +24,7 @@
                 <th>Paid</th>
                 <th>Balance</th>
                 <th>Seats</th>
+                <th>Affiliation</th>
             </tr>
         </thead>
         <tbody>
@@ -43,6 +44,7 @@
                 <td>{{ guest.paid }}</td>
                 <td>{{ guest.balance }}</td>
                 <td>{{ guest.totalSeats }}</td>
+                <td>{{ guest.honoreeString }}</td>
             </tr>
         {% endfor %}
         </tbody>

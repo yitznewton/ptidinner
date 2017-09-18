@@ -220,6 +220,13 @@ class Guest
     public $previousAdTypes;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="honoree_string", length=50)
+     */
+    public $honoreeString;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="is_business", type="boolean")
@@ -289,9 +296,9 @@ class Guest
     public function adSum()
     {
         return array_sum(
-            array_map(function($ad) {
+            $this->ads->map(function($ad) {
                 return $ad->price();
-            }, $this->ads)
+            })->toArray()
         );
     }
 
@@ -300,9 +307,7 @@ class Guest
      */
     public function adsCurrent()
     {
-        return join(', ', array_map(function($ad) {
-            return $ad->adType->label;
-        }, $this->ads));
+        return join(', ', $this->adTypes());
     }
 
     /**
@@ -310,9 +315,9 @@ class Guest
      */
     public function adTypes()
     {
-        return array_map(function ($ad) {
+        return $this->ads->map(function ($ad) {
             return (string) $ad->adType;
-        }, $this->ads);
+        })->toArray();
     }
 
     /**
@@ -344,12 +349,14 @@ class Guest
     }
 
     /**
-     * @return string
+     * @return void
+     *
+     * @ORM\PreUpdate
      */
-    public function honoreeString()
+    public function updateHonoreeString()
     {
-        return join(', ', array_map(function($honoree) {
+        $this->honoreeString = join(', ', $this->honorees->map(function($honoree) {
             return $honoree->code;
-        }, $this->honorees));
+        })->toArray());
     }
 }

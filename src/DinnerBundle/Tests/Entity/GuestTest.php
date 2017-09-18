@@ -6,6 +6,7 @@ use DinnerBundle\Entity\Ad;
 use DinnerBundle\Entity\AdType;
 use DinnerBundle\Entity\Guest;
 use DinnerBundle\Entity\Honoree;
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 
 class GuestTest extends TestCase
@@ -87,7 +88,7 @@ class GuestTest extends TestCase
         $ad->adType = $adType;
 
         $this->guest->pledge2016 = 99;
-        $this->guest->ads = [$ad];
+        $this->guest->ads = new ArrayCollection([$ad]);
 
         $this->assertTrue($this->guest->pledgeIsLacking());
     }
@@ -103,7 +104,7 @@ class GuestTest extends TestCase
         $ad->adType = $adType;
 
         $this->guest->pledge2016 = 100;
-        $this->guest->ads = [$ad];
+        $this->guest->ads = new ArrayCollection([$ad]);
 
         $this->assertFalse($this->guest->pledgeIsLacking());
     }
@@ -117,9 +118,11 @@ class GuestTest extends TestCase
         $honoree2 = new Honoree();
         $honoree1->code = 'XYZ';
         $honoree2->code = 'ABC';
-        $this->guest->honorees = [$honoree1, $honoree2];
+        $this->guest->honorees = new ArrayCollection([$honoree1, $honoree2]);
 
-        $this->assertEquals('XYZ, ABC', $this->guest->honoreeString());
+        $this->guest->updateHonoreeString();
+
+        $this->assertEquals('XYZ, ABC', $this->guest->honoreeString);
     }
 
     /**
@@ -135,7 +138,7 @@ class GuestTest extends TestCase
         $ad2 = new Ad();
         $ad1->adType = $adType1;
         $ad2->adType = $adType2;
-        $this->guest->ads = [$ad1, $ad2];
+        $this->guest->ads = new ArrayCollection([$ad1, $ad2]);
 
         $this->assertEquals('Gold, Full', $this->guest->adsCurrent());
     }
