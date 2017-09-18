@@ -10,6 +10,10 @@
                 <td>{{ guest.id }}</td>
             </tr>
             <tr>
+                <th>Ykpid</th>
+                <td>{{ guest.ykpId }}</td>
+            </tr>
+            <tr>
                 <th>Familyname</th>
                 <td>{{ guest.familyName }}</td>
             </tr>
@@ -26,6 +30,26 @@
                 <td>{{ guest.hisName }}</td>
             </tr>
             <tr>
+                <th>Note</th>
+                <td>{{ guest.note }}</td>
+            </tr>
+            <tr>
+                <th>Pledge2013</th>
+                <td>{{ guest.pledge2013 }}</td>
+            </tr>
+            <tr>
+                <th>Pledge2014</th>
+                <td>{{ guest.pledge2014 }}</td>
+            </tr>
+            <tr>
+                <th>Pledge2015</th>
+                <td>{{ guest.pledge2015 }}</td>
+            </tr>
+            <tr>
+                <th>Paid</th>
+                <td>{{ guest.paid }}</td>
+            </tr>
+            <tr>
                 <th>Streetaddress</th>
                 <td>{{ guest.streetAddress }}</td>
             </tr>
@@ -40,6 +64,54 @@
             <tr>
                 <th>Zip</th>
                 <td>{{ guest.zip }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ guest.country }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ guest.phone }}</td>
+            </tr>
+            <tr>
+                <th>Mobile</th>
+                <td>{{ guest.mobile }}</td>
+            </tr>
+            <tr>
+                <th>Fax</th>
+                <td>{{ guest.fax }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ guest.email }}</td>
+            </tr>
+            <tr>
+                <th>Referredby</th>
+                <td>{{ guest.referredBy }}</td>
+            </tr>
+            <tr>
+                <th>Paidseats</th>
+                <td>{{ guest.paidSeats }}</td>
+            </tr>
+            <tr>
+                <th>Compseats</th>
+                <td>{{ guest.compSeats }}</td>
+            </tr>
+            <tr>
+                <th>Previousadcopy</th>
+                <td>{{ guest.previousAdCopy }}</td>
+            </tr>
+            <tr>
+                <th>Previousadtypes</th>
+                <td>{{ guest.previousAdTypes }}</td>
+            </tr>
+            <tr>
+                <th>Isbusiness</th>
+                <td>{% if guest.isBusiness %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Donotcall</th>
+                <td>{% if guest.doNotCall %}Yes{% else %}No{% endif %}</td>
             </tr>
         </tbody>
     </table>

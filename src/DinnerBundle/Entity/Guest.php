@@ -29,6 +29,13 @@ class Guest
     }
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="ykp_id", type="integer", nullable=true)
+     */
+    public $ykpId;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="family_name", length=50)
@@ -57,27 +64,44 @@ class Guest
     public $hisName = '';
 
     /**
-     * @var integer
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
      */
-    public $pledge2013;
+    public $note;
 
     /**
-     * @var integer
+     * @var float
+     *
+     * @ORM\Column(name="pledge_2013", type="float", length=8, scale=2)
+     */
+    public $pledge2013 = 0.0;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="pledge_2014", type="float", length=8, scale=2)
      */
     public $pledge2014;
 
     /**
-     * @var integer
+     * @var float
+     *
+     * @ORM\Column(name="pledge_2015", type="float", length=8, scale=2)
      */
     public $pledge2015;
 
     /**
-     * @var integer
+     * @var float
+     *
+     * @ORM\Column(name="pledge_2016", type="float", length=8, scale=2)
      */
-    public $pledge2016;
+//    public $pledge2016;
 
     /**
-     * @var integer
+     * @var float
+     *
+     * @ORM\Column(type="float", length=8, scale=2)
      */
     public $paid;
 
@@ -108,6 +132,90 @@ class Guest
      * @ORM\Column(name="zip", length=9)
      */
     public $zip = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(length=50, nullable=true)
+     */
+    public $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(length=50, nullable=true)
+     */
+    public $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(length=50, nullable=true)
+     */
+    public $mobile;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(length=50, nullable=true)
+     */
+    public $fax;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(length=100, nullable=true)
+     */
+    public $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="referred_by", length=100, nullable=true)
+     */
+    public $referredBy;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="paid_seats", type="integer")
+     */
+    public $paidSeats = 0;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="comp_seats", type="integer")
+     */
+    public $compSeats = 0;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="previous_ad_copy", type="text", nullable=true)
+     */
+    public $previousAdCopy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ads_previous", length=100)
+     */
+    public $previousAdTypes;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_business", type="boolean")
+     */
+    public $isBusiness = false;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="do_not_call", type="boolean")
+     */
+    public $doNotCall = false;
 
     /**
      * @var ArrayCollection<Ad>

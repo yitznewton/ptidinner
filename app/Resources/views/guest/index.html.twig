@@ -7,14 +7,32 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Ykpid</th>
                 <th>Familyname</th>
                 <th>Title</th>
                 <th>Hername</th>
                 <th>Hisname</th>
+                <th>Note</th>
+                <th>Pledge2013</th>
+                <th>Pledge2014</th>
+                <th>Pledge2015</th>
+                <th>Paid</th>
                 <th>Streetaddress</th>
                 <th>City</th>
                 <th>State</th>
                 <th>Zip</th>
+                <th>Country</th>
+                <th>Phone</th>
+                <th>Mobile</th>
+                <th>Fax</th>
+                <th>Email</th>
+                <th>Referredby</th>
+                <th>Paidseats</th>
+                <th>Compseats</th>
+                <th>Previousadcopy</th>
+                <th>Previousadtypes</th>
+                <th>Isbusiness</th>
+                <th>Donotcall</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,14 +40,32 @@
         {% for guest in guests %}
             <tr>
                 <td><a href="{{ path('guest_show', { 'id': guest.id }) }}">{{ guest.id }}</a></td>
+                <td>{{ guest.ykpId }}</td>
                 <td>{{ guest.familyName }}</td>
                 <td>{{ guest.title }}</td>
                 <td>{{ guest.herName }}</td>
                 <td>{{ guest.hisName }}</td>
+                <td>{{ guest.note }}</td>
+                <td>{{ guest.pledge2013 }}</td>
+                <td>{{ guest.pledge2014 }}</td>
+                <td>{{ guest.pledge2015 }}</td>
+                <td>{{ guest.paid }}</td>
                 <td>{{ guest.streetAddress }}</td>
                 <td>{{ guest.city }}</td>
                 <td>{{ guest.state }}</td>
                 <td>{{ guest.zip }}</td>
+                <td>{{ guest.country }}</td>
+                <td>{{ guest.phone }}</td>
+                <td>{{ guest.mobile }}</td>
+                <td>{{ guest.fax }}</td>
+                <td>{{ guest.email }}</td>
+                <td>{{ guest.referredBy }}</td>
+                <td>{{ guest.paidSeats }}</td>
+                <td>{{ guest.compSeats }}</td>
+                <td>{{ guest.previousAdCopy }}</td>
+                <td>{{ guest.previousAdTypes }}</td>
+                <td>{% if guest.isBusiness %}Yes{% else %}No{% endif %}</td>
+                <td>{% if guest.doNotCall %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>
                         <li>
