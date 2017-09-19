@@ -55,14 +55,14 @@
     </div>
 
     {{ form_row(edit_form.honorees) }}
-    <input type="submit" value="Edit"/>
+    <input type="submit" value="Save"/>
     {{ form_end(edit_form) }}
 
     <nav>
         <ul>
-            <li><a href="{{ path('guest_index') }}">Back to the list</a></li>
+            <li><a href="{{ path('guest_index') }}">Cancel</a></li>
             <li>
-                {{ form_start(delete_form) }}
+                {{ form_start(delete_form, {attr: {class: 'confirm-on-submit'}}) }}
                 <input type="submit" value="Delete">
                 {{ form_end(delete_form) }}
             </li>

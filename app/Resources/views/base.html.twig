@@ -13,6 +13,10 @@
 </head>
 <body>
 {% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    {% javascripts 'bundles/dinner/js/*.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
 </body>
 </html>

@@ -244,10 +244,8 @@ class Guest
     /**
      * @var ArrayCollection<Ad>
      *
-     * @ORM\ManyToMany(targetEntity="Ad", inversedBy="guests")
-     * @ORM\JoinTable(name="ad_guest_assoc",
-     *     joinColumns={@ORM\JoinColumn(name="guest_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="ad_id", referencedColumnName="id")}
+     * @ORM\ManyToMany(targetEntity="Ad", mappedBy="guests")
+     * @ORM\JoinTable(name="ad_guest_assoc")
      * )
      */
     public $ads;

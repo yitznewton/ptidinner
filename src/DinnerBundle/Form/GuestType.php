@@ -40,10 +40,9 @@ class GuestType extends AbstractType
             ->add('doNotCall')
             ->add('note')
             ->add('previousAdCopy')
-            ->add('honorees', EntityType::class, ['class' => Honoree::class, 'label' => 'Honoree affiliation', 'multiple' => true])
-            ;
+            ->add('honorees', EntityType::class, ['class' => Honoree::class, 'label' => 'Honoree affiliation', 'multiple' => true]);
     }
-    
+
     /**
      * {@inheritdoc}
      */

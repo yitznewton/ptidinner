@@ -31,16 +31,16 @@ class Ad
     /**
      * @var string
      *
-     * @ORM\Column(name="copy", type="text")
+     * @ORM\Column(name="copy", type="text", nullable=true)
      */
-    public $copy = '';
+    public $copy;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="note", type="text")
+     * @ORM\Column(name="note", type="text", nullable=true)
      */
-    public $note = '';
+    public $note;
 
     /**
      * @var string
@@ -80,7 +80,8 @@ class Ad
     /**
      * @var ArrayCollection<Guest>
      *
-     * @ORM\ManyToMany(targetEntity="Guest", mappedBy="ads")
+     * @ORM\ManyToMany(targetEntity="Guest", inversedBy="ads")
+     * @ORM\JoinTable(name="ad_guest_assoc")
      */
     public $guests;
 

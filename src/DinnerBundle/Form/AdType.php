@@ -2,6 +2,8 @@
 
 namespace DinnerBundle\Form;
 
+use DinnerBundle\Entity\Guest;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,9 +15,16 @@ class AdType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('copy')->add('note')->add('guestString')->add('typeAccession')->add('sentToPrinter')->add('proofFromPrinter')->add('proofApproved')->add('guests')->add('adType');
+        $builder
+            ->add('adType')
+            ->add('copy')
+            ->add('note')
+            ->add('sentToPrinter')
+            ->add('proofFromPrinter')
+            ->add('proofApproved')
+            ->add('guests', EntityType::class, ['class' => Guest::class, 'label' => 'This ad is for', 'multiple' => true]);
     }
-    
+
     /**
      * {@inheritdoc}
      */

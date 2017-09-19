@@ -1,0 +1,18 @@
+body {
+    font-family: Georgia, serif;
+    font-size: 10pt;
+    background: #eee;
+}
+
+.guest-form {
+    label, .label {
+        float: left;
+        text-align: right;
+        font-weight: bold;
+        width: 200px;
+    }
+
+    > ul > li {
+        clear: both;
+    }
+}
