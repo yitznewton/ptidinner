@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Guest edit</h1>
 
-    {{ form_start(edit_form) }}
+    {{ form_start(edit_form, {attr: {class: 'guest-form'}}) }}
     {{ form_row(edit_form.familyName) }}
     {{ form_row(edit_form.title) }}
     {{ form_row(edit_form.hisName) }}
@@ -20,6 +20,22 @@
     {{ form_row(edit_form.fax) }}
     {{ form_row(edit_form.email) }}
     {{ form_row(edit_form.referredBy) }}
+
+    <div>
+        <div class="label">Pledge 2013</div>
+        <div>{{ guest.pledge2013 }}</div>
+    </div>
+
+    <div>
+        <div class="label">Pledge 2014</div>
+        <div>{{ guest.pledge2014 }}</div>
+    </div>
+
+    <div>
+        <div class="label">Pledge 2015</div>
+        <div>{{ guest.pledge2015 }}</div>
+    </div>
+
     {{ form_row(edit_form.pledge2016) }}
     {{ form_row(edit_form.paid) }}
 
@@ -34,10 +50,12 @@
     {{ form_row(edit_form.doNotCall) }}
     {{ form_row(edit_form.note) }}
 
+    {% if guest.previousAdTypes %}
     <div>
         <div class="label">Previous ads</div>
         <div>{{ guest.previousAdTypes }}</div>
     </div>
+    {% endif %}
 
     {{ form_row(edit_form.previousAdCopy) }}
 
@@ -50,9 +68,9 @@
                         <a href="{{ path('ad_edit', {id: ad.id}) }}">{{ ad }}</a>
                     </li>
                 {% endfor %}
+                <li>TODO Add an ad</li>
             </ul>
 
-            <div>TODO Add an ad</div>
         </div>
     </div>
 

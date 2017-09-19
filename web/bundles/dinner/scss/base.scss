@@ -8,7 +8,7 @@ h1 {
     font-family: Lato, serif;
 }
 
-.guest-form {
+.guest-form, .ad-form {
     label, .label {
         float: left;
         text-align: right;
@@ -16,7 +16,22 @@ h1 {
         width: 200px;
     }
 
-    > ul > li {
+    > div > div:nth-child(2) {
+        float: left;
+    }
+
+    > div {
         clear: both;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
 }
