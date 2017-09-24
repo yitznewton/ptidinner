@@ -30,7 +30,14 @@
         {{ form_row(edit_form.note) }}
         {{ form_row(edit_form.sentToPrinter) }}
         {{ form_row(edit_form.proofFromPrinter) }}
-        {{ form_row(edit_form.proofApproved) }}
+
+        <div>
+            {{ form_label(edit_form.proofApproved) }}
+            <div>
+                {{ form_widget(edit_form.proofApproved) }}
+                <input class="approve-button" type="submit" value="Approve now" />
+            </div>
+        </div>
 
         {% for guest in ad.guests %}
             <div>

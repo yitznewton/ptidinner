@@ -9,4 +9,10 @@
         e.preventDefault();
         return false;
     });
+
+    var approvedCheckbox = document.querySelector('#dinnerbundle_ad_proofApproved');
+
+    document.querySelector('.approve-button').addEventListener('click', function () {
+        approvedCheckbox.checked = true;
+    });
 })();
