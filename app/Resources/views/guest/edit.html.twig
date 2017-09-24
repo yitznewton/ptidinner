@@ -69,7 +69,9 @@
                             <a href="{{ path('ad_edit', {id: ad.id}) }}">{{ ad }}</a>
                         </li>
                     {% endfor %}
-                    <li>TODO Add an ad</li>
+                    <li class="add-ad">
+                        <a href="{{  path('ad_new_for_guest', {id: guest.id}) }}">Add an ad</a>
+                    </li>
                 </ul>
 
             </div>

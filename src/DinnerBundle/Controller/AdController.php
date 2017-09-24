@@ -3,6 +3,7 @@
 namespace DinnerBundle\Controller;
 
 use DinnerBundle\Entity\Ad;
+use DinnerBundle\Entity\Guest;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -40,6 +41,33 @@ class AdController extends Controller
     public function newAction(Request $request)
     {
         $ad = new Ad();
+        $form = $this->createForm('DinnerBundle\Form\AdType', $ad);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($ad);
+            $em->flush();
+
+            return $this->redirectToRoute('ad_show', array('id' => $ad->getId()));
+        }
+
+        return $this->render('ad/new.html.twig', array(
+            'ad' => $ad,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * Creates a new ad entity.
+     *
+     * @Route("/new/guest/{id}", name="ad_new_for_guest")
+     * @Method({"GET"})
+     */
+    public function newForGuestAction(Request $request, Guest $guest)
+    {
+        $ad = new Ad();
+        $ad->guests->add($guest);
         $form = $this->createForm('DinnerBundle\Form\AdType', $ad);
         $form->handleRequest($request);
 
