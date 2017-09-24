@@ -24,25 +24,25 @@
 
         <div>
             <div class="label">Pledge 2013</div>
-            <div>{{ guest.pledge2013 }}</div>
+            <div>{{ '%01.2f' | format(guest.pledge2013) }}</div>
         </div>
 
         <div>
             <div class="label">Pledge 2014</div>
-            <div>{{ guest.pledge2014 }}</div>
+            <div>{{ '%01.2f' | format(guest.pledge2014) }}</div>
         </div>
 
         <div>
             <div class="label">Pledge 2015</div>
-            <div>{{ guest.pledge2015 }}</div>
+            <div>{{ '%01.2f' | format(guest.pledge2015) }}</div>
         </div>
 
-        {{ form_row(edit_form.pledge2016) }}
-        {{ form_row(edit_form.paid) }}
+        {{ form_row(edit_form.pledge2016, {value: '%01.2f' | format(guest.pledge2016) }) }}
+        {{ form_row(edit_form.paid, {value: '%01.2f' | format(guest.pledge2016) }) }}
 
         <div>
             <div class="label">Sum of current ad values</div>
-            <div>{{ guest.adSum }}</div>
+            <div>{{ '%01.2f' | format(guest.adSum) }}</div>
         </div>
 
         {{ form_row(edit_form.paidSeats) }}
