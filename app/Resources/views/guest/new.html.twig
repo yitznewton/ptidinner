@@ -3,14 +3,49 @@
 {% block body %}
     <h1>Guest creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <section class="guest-form">
+        {{ form_start(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('guest_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        {{ form_row(form.familyName) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.hisName) }}
+        {{ form_row(form.herName) }}
+        {{ form_row(form.streetAddress) }}
+        {{ form_row(form.city) }}
+        {{ form_row(form.state) }}
+        {{ form_row(form.zip) }}
+        {{ form_row(form.country) }}
+        {{ form_row(form.phone) }}
+        {{ form_row(form.mobile) }}
+        {{ form_row(form.fax) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.referredBy) }}
+        {{ form_row(form.pledge2016) }}
+        {{ form_row(form.paid) }}
+        {{ form_row(form.paidSeats) }}
+        {{ form_row(form.compSeats) }}
+        {{ form_row(form.isBusiness) }}
+        {{ form_row(form.doNotCall) }}
+        {{ form_row(form.note) }}
+        {{ form_row(form.previousAdCopy) }}
+        {{ form_row(form.honorees) }}
+
+        <div>
+            <div class="label">&nbsp;</div>
+            <div>
+                <input type="submit" value="Create"/>
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+
+        <div>
+            <div class="label">&nbsp;</div>
+            <div>
+                <nav class="form-controls">
+                    <a href="{{ path('ad_index') }}">Cancel</a>
+                </nav>
+            </div>
+        </div>
+    </section>
 {% endblock %}
