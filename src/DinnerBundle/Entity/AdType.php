@@ -63,7 +63,7 @@ class AdType
      */
     public $typeAccessionCount = 0;
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->label;
     }

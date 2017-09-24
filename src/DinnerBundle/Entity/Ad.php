@@ -98,26 +98,17 @@ class Ad
         $this->guests = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->typeAccession . ': ' . $this->truncatedCopy();
     }
 
-    /**
-     * @return int
-     */
-    public function price()
+    public function price(): int
     {
         return $this->adType->price;
     }
 
-    /**
-     * @return string
-     */
-    private function truncatedCopy()
+    private function truncatedCopy(): string
     {
         $len = 25;
         $copy = $this->copy;

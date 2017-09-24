@@ -267,24 +267,18 @@ class Guest
         $this->honorees = new ArrayCollection();
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $names = array_values(array_filter([$this->hisName, $this->herName]));
         return $this->familyName . ', ' . join(' & ', $names);
     }
 
-    /**
-     * @return float
-     */
-    public function pledgeCurrent()
+    public function pledgeCurrent(): float
     {
         return $this->pledge2016;
     }
 
-    /**
-     * @return int
-     */
-    public function pledgePrevious()
+    public function pledgePrevious(): float
     {
         return $this->pledge2015;
     }
@@ -301,10 +295,7 @@ class Guest
         );
     }
 
-    /**
-     * @return string
-     */
-    public function adsCurrent()
+    public function adsCurrent(): string
     {
         return join(', ', $this->adTypes());
     }
@@ -312,33 +303,24 @@ class Guest
     /**
      * @return string[]
      */
-    public function adTypes()
+    public function adTypes(): array
     {
         return $this->ads->map(function ($ad) {
             return (string) $ad->adType;
         })->toArray();
     }
 
-    /**
-     * @return boolean
-     */
-    public function pledgeIsLow()
+    public function pledgeIsLow(): bool
     {
         return $this->pledgeCurrent() < $this->pledgePrevious();
     }
 
-    /**
-     * @return boolean
-     */
-    public function pledgeIsLacking()
+    public function pledgeIsLacking(): bool
     {
         return $this->pledgeCurrent() < $this->adSum();
     }
 
-    /**
-     * @return string
-     */
-    public function fullAddress()
+    public function fullAddress(): string
     {
         return sprintf('%s, %s, %s %s',
             $this->streetAddress,
@@ -348,11 +330,9 @@ class Guest
     }
 
     /**
-     * @return void
-     *
      * @ORM\PreUpdate
      */
-    public function updateHonoreeString()
+    public function updateHonoreeString(): void
     {
         $this->honoreeString = join(', ', $this->honorees->map(function($honoree) {
             return $honoree->code;
