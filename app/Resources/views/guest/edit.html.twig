@@ -5,87 +5,103 @@
 {% block body %}
     <h1>Guest edit</h1>
 
-    {{ form_start(edit_form, {attr: {class: 'guest-form'}}) }}
-    {{ form_row(edit_form.familyName) }}
-    {{ form_row(edit_form.title) }}
-    {{ form_row(edit_form.hisName) }}
-    {{ form_row(edit_form.herName) }}
-    {{ form_row(edit_form.streetAddress) }}
-    {{ form_row(edit_form.city) }}
-    {{ form_row(edit_form.state) }}
-    {{ form_row(edit_form.zip) }}
-    {{ form_row(edit_form.country) }}
-    {{ form_row(edit_form.phone) }}
-    {{ form_row(edit_form.mobile) }}
-    {{ form_row(edit_form.fax) }}
-    {{ form_row(edit_form.email) }}
-    {{ form_row(edit_form.referredBy) }}
+    <section class="guest-form">
+        {{ form_start(edit_form) }}
+        {{ form_row(edit_form.familyName) }}
+        {{ form_row(edit_form.title) }}
+        {{ form_row(edit_form.hisName) }}
+        {{ form_row(edit_form.herName) }}
+        {{ form_row(edit_form.streetAddress) }}
+        {{ form_row(edit_form.city) }}
+        {{ form_row(edit_form.state) }}
+        {{ form_row(edit_form.zip) }}
+        {{ form_row(edit_form.country) }}
+        {{ form_row(edit_form.phone) }}
+        {{ form_row(edit_form.mobile) }}
+        {{ form_row(edit_form.fax) }}
+        {{ form_row(edit_form.email) }}
+        {{ form_row(edit_form.referredBy) }}
 
-    <div>
-        <div class="label">Pledge 2013</div>
-        <div>{{ guest.pledge2013 }}</div>
-    </div>
-
-    <div>
-        <div class="label">Pledge 2014</div>
-        <div>{{ guest.pledge2014 }}</div>
-    </div>
-
-    <div>
-        <div class="label">Pledge 2015</div>
-        <div>{{ guest.pledge2015 }}</div>
-    </div>
-
-    {{ form_row(edit_form.pledge2016) }}
-    {{ form_row(edit_form.paid) }}
-
-    <div>
-        <div class="label">Sum of current ad values</div>
-        <div>{{ guest.adSum }}</div>
-    </div>
-
-    {{ form_row(edit_form.paidSeats) }}
-    {{ form_row(edit_form.compSeats) }}
-    {{ form_row(edit_form.isBusiness) }}
-    {{ form_row(edit_form.doNotCall) }}
-    {{ form_row(edit_form.note) }}
-
-    {% if guest.previousAdTypes %}
-    <div>
-        <div class="label">Previous ads</div>
-        <div>{{ guest.previousAdTypes }}</div>
-    </div>
-    {% endif %}
-
-    {{ form_row(edit_form.previousAdCopy) }}
-
-    <div>
-        <div class="label">Current ads</div>
         <div>
-            <ul>
-                {% for ad in guest.ads %}
-                    <li>
-                        <a href="{{ path('ad_edit', {id: ad.id}) }}">{{ ad }}</a>
-                    </li>
-                {% endfor %}
-                <li>TODO Add an ad</li>
-            </ul>
-
+            <div class="label">Pledge 2013</div>
+            <div>{{ guest.pledge2013 }}</div>
         </div>
-    </div>
 
-    {{ form_row(edit_form.honorees) }}
-    <input type="submit" value="Save"/>
-    {{ form_end(edit_form) }}
+        <div>
+            <div class="label">Pledge 2014</div>
+            <div>{{ guest.pledge2014 }}</div>
+        </div>
 
-    <nav>
-        <ul>
-            <li><a href="{{ path('guest_index') }}">Cancel</a></li>
-            <li>
-                {{ form_start(delete_form, {attr: {class: 'confirm-on-submit'}}) }}
-                <input type="submit" value="Delete">
-                {{ form_end(delete_form) }}
-            </li>
-        </ul>
-    </nav>
+        <div>
+            <div class="label">Pledge 2015</div>
+            <div>{{ guest.pledge2015 }}</div>
+        </div>
+
+        {{ form_row(edit_form.pledge2016) }}
+        {{ form_row(edit_form.paid) }}
+
+        <div>
+            <div class="label">Sum of current ad values</div>
+            <div>{{ guest.adSum }}</div>
+        </div>
+
+        {{ form_row(edit_form.paidSeats) }}
+        {{ form_row(edit_form.compSeats) }}
+        {{ form_row(edit_form.isBusiness) }}
+        {{ form_row(edit_form.doNotCall) }}
+        {{ form_row(edit_form.note) }}
+
+        {% if guest.previousAdTypes %}
+            <div>
+                <div class="label">Previous ads</div>
+                <div>{{ guest.previousAdTypes }}</div>
+            </div>
+        {% endif %}
+
+        {{ form_row(edit_form.previousAdCopy) }}
+
+        <div>
+            <div class="label">Current ads</div>
+            <div>
+                <ul>
+                    {% for ad in guest.ads %}
+                        <li>
+                            <a href="{{ path('ad_edit', {id: ad.id}) }}">{{ ad }}</a>
+                        </li>
+                    {% endfor %}
+                    <li>TODO Add an ad</li>
+                </ul>
+
+            </div>
+        </div>
+
+        {{ form_row(edit_form.honorees) }}
+
+        <div>
+            <div class="label">&nbsp;</div>
+            <div>
+                <input type="submit" value="Save"/>
+            </div>
+        </div>
+
+        {{ form_end(edit_form) }}
+
+        <div>
+            <div class="label">&nbsp;</div>
+            <div>
+                <nav class="form-controls">
+                    <ul>
+                        <li>
+                            <a href="{{ path('guest_index') }}">Cancel</a>
+                        </li>
+                        <li>
+                            {{ form_start(delete_form, {attr: {class: 'confirm-on-submit'}}) }}
+                            <input type="submit" value="Delete">
+                            {{ form_end(delete_form) }}
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
 {% endblock %}

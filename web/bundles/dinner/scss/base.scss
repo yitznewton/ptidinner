@@ -1,7 +1,8 @@
 body {
     font-family: Rubik, sans-serif;
-    font-size: 10pt;
+    font-size: 12pt;
     background: #eee;
+    padding: 0 0 1em;
 }
 
 h1 {
@@ -13,15 +14,26 @@ h1 {
         float: left;
         text-align: right;
         font-weight: bold;
-        width: 200px;
+        width: 20%;
+        padding: 0 0.8em 0 0;
     }
 
-    > div > div:nth-child(2) {
+    form > div {
+        padding: 0.4em 0;
+    }
+
+    form > div > div:nth-child(2) {
         float: left;
+        width: 75%;
     }
 
-    > div {
+    form > div {
         clear: both;
+    }
+
+    textarea {
+        height: 10em;
+        width: 30em;
     }
 
     ul {
@@ -33,5 +45,34 @@ h1 {
         list-style: none;
         margin: 0;
         padding: 0;
+    }
+
+    input[type="submit"] {
+        font-size: 1.2em;
+    }
+}
+
+.form-controls {
+    margin: 2em 0 0;
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        float: left;
+        list-style: none;
+        border-right: 1px solid #000;
+        margin: 0;
+        padding: 0 0.4em;
+    }
+
+    li:first-child {
+        padding-left: 0;
+    }
+
+    li:last-child {
+        border-right: none;
     }
 }

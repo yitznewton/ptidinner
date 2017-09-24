@@ -5,53 +5,69 @@
 {% block body %}
     <h1>Ad edit</h1>
 
-    {{ form_start(edit_form, {attr: {class: 'ad-form'}}) }}
+    <section class="ad-form">
 
-    {{ form_row(edit_form.adType) }}
+        {{ form_start(edit_form) }}
 
-    <div>
-        <div class="label">ID</div>
-        <div>{{ ad.typeAccession }}</div>
-    </div>
+        {{ form_row(edit_form.adType) }}
 
-    {% for guest in ad.guests %}
-        {% if guest.previousAdCopy %}
+        <div>
+            <div class="label">ID</div>
+            <div>{{ ad.typeAccession }}</div>
+        </div>
+
+        {% for guest in ad.guests %}
+            {% if guest.previousAdCopy %}
+                <div>
+                    <div class="label">Previous ads
+                        for {{ guest.familyName }}</div>
+                    <div>{{ guest.previousAdCopy | nl2br }}</div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        {{ form_row(edit_form.copy) }}
+        {{ form_row(edit_form.note) }}
+        {{ form_row(edit_form.sentToPrinter) }}
+        {{ form_row(edit_form.proofFromPrinter) }}
+        {{ form_row(edit_form.proofApproved) }}
+
+        {% for guest in ad.guests %}
             <div>
-                <div class="label">Previous ads
-                    for {{ guest.familyName }}</div>
-                <div>{{ guest.previousAdCopy | nl2br }}</div>
+                <div class="label">&nbsp;</div>
+                <div>
+                    <a href="{{ path('guest_edit', {id: guest.id}) }}">{{ guest }}</a>
+                </div>
             </div>
-        {% endif %}
-    {% endfor %}
+        {% endfor %}
 
-    {{ form_row(edit_form.copy) }}
-    {{ form_row(edit_form.note) }}
-    {{ form_row(edit_form.sentToPrinter) }}
-    {{ form_row(edit_form.proofFromPrinter) }}
-    {{ form_row(edit_form.proofApproved) }}
+        {{ form_row(edit_form.guests) }}
 
-    {% for guest in ad.guests %}
         <div>
             <div class="label">&nbsp;</div>
             <div>
-                <a href="{{ path('guest_edit', {id: guest.id}) }}">{{ guest }}</a>
+                <input type="submit" value="Save"/>
             </div>
         </div>
-    {% endfor %}
 
-    {{ form_row(edit_form.guests) }}
+        {{ form_end(edit_form) }}
 
-    <input type="submit" value="Save"/>
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('ad_index') }}">Cancel</a>
-        </li>
-        <li>
-            {{ form_start(delete_form, {attr: {class: 'confirm-on-submit'}}) }}
-            <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <div>
+            <div class="label">&nbsp;</div>
+            <div>
+                <nav class="form-controls">
+                    <ul>
+                        <li>
+                            <a href="{{ path('ad_index') }}">Cancel</a>
+                        </li>
+                        <li>
+                            {{ form_start(delete_form, {attr: {class: 'confirm-on-submit'}}) }}
+                            <input type="submit" value="Delete">
+                            {{ form_end(delete_form) }}
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
 {% endblock %}
