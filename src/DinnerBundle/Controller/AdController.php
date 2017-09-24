@@ -81,6 +81,7 @@ class AdController extends Controller
 
         return $this->render('ad/new.html.twig', array(
             'ad' => $ad,
+            'guest' => $guest,
             'form' => $form->createView(),
         ));
     }

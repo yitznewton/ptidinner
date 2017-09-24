@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}New ad {% if guest is defined %}for {{ guest }} {% endif %}| {{ parent() }}{% endblock %}
+
 {% block body %}
     <h1>Ad creation</h1>
 
