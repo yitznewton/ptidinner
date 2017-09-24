@@ -2,6 +2,7 @@
 
 namespace DinnerBundle\Controller;
 
+use DinnerBundle\AdCreateTransaction;
 use DinnerBundle\Entity\Ad;
 use DinnerBundle\Entity\Guest;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -45,11 +46,7 @@ class AdController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($ad);
-            $em->flush();
-
-            return $this->redirectToRoute('ad_show', array('id' => $ad->getId()));
+            return $this->persistAd($ad);
         }
 
         return $this->render('ad/new.html.twig', array(
@@ -62,7 +59,7 @@ class AdController extends Controller
      * Creates a new ad entity.
      *
      * @Route("/new/guest/{id}", name="ad_new_for_guest")
-     * @Method({"GET"})
+     * @Method({"GET", "POST"})
      */
     public function newForGuestAction(Request $request, Guest $guest)
     {
@@ -72,11 +69,7 @@ class AdController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($ad);
-            $em->flush();
-
-            return $this->redirectToRoute('ad_show', array('id' => $ad->getId()));
+            return $this->persistAd($ad);
         }
 
         return $this->render('ad/new.html.twig', array(
@@ -145,5 +138,12 @@ class AdController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    private function persistAd(Ad $ad)
+    {
+        (new AdCreateTransaction($this->getDoctrine()->getManager(), $ad))->persist();
+
+        return $this->redirectToRoute('ad_edit', array('id' => $ad->getId()));
     }
 }

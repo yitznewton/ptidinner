@@ -20,8 +20,8 @@ class AdType extends AbstractType
             ->add('adType')
             ->add('copy')
             ->add('note')
-            ->add('sentToPrinter', DateType::class, ['widget' => 'single_text'])
-            ->add('proofFromPrinter', DateType::class, ['widget' => 'single_text'])
+            ->add('sentToPrinter', DateType::class, ['widget' => 'single_text', 'required' => false])
+            ->add('proofFromPrinter', DateType::class, ['widget' => 'single_text', 'required' => false])
             ->add('proofApproved')
             ->add('guests', EntityType::class, ['class' => Guest::class, 'label' => 'This ad is for', 'multiple' => true]);
     }

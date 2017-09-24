@@ -48,7 +48,7 @@ class GuestController extends Controller
             $em->persist($guest);
             $em->flush();
 
-            return $this->redirectToRoute('guest_show', array('id' => $guest->getId()));
+            return $this->redirectToRoute('guest_edit', array('id' => $guest->getId()));
         }
 
         return $this->render('guest/new.html.twig', array(
