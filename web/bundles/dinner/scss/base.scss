@@ -9,6 +9,24 @@ h1 {
     font-family: Lato, serif;
 }
 
+td.numeric {
+    text-align: right;
+}
+
+.alert {
+    background: pink;
+}
+
+.index {
+    border-collapse: collapse;
+    margin: 1em 0;
+
+    th, td {
+        border: 1px solid #000;
+        padding: 0.2em 0.4em;
+    }
+}
+
 .guest-form, .ad-form {
     label, .label {
         float: left;

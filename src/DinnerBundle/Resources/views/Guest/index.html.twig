@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% import '@Dinner/Common/numeric.html.twig' as numeric %}
+
 {% block title %}Guests | {{ parent() }}{% endblock %}
 
 {% block body %}
@@ -9,7 +11,7 @@
         <div><a href="{{ path('guest_new') }}">Create a new guest</a></div>
     </nav>
 
-    <table>
+    <table class="index">
         <thead>
             <tr>
                 <th>Family</th>
@@ -39,13 +41,30 @@
                 <td>{{ guest.city }}</td>
                 <td>{{ guest.phone }}</td>
                 <td>{{ guest.mobile }}</td>
-                <td>{{ guest.pledge2013 }}</td>
-                <td>{{ guest.pledge2014 }}</td>
-                <td>{{ guest.pledge2015 }}</td>
-                <td>{{ guest.pledge2016 }}</td>
-                <td>{{ guest.paid }}</td>
-                <td>{{ guest.balance }}</td>
-                <td>{{ guest.totalSeats }}</td>
+                <td class="numeric">{{ numeric.currency(guest.pledge2013) }}</td>
+                <td class="numeric">{{ numeric.currency(guest.pledge2014) }}</td>
+
+                {% if guest.pledgeIsLow %}
+                    <td class="numeric alert">{{ numeric.currency(guest.pledgePrevious) }} </td>
+                {% else %}
+                    <td class="numeric">{{ numeric.currency(guest.pledgePrevious) }} </td>
+                {% endif %}
+
+                {% if guest.pledgeIsLow or not guest.pledgeIsPaid %}
+                    <td class="numeric alert">{{ numeric.currency(guest.pledgeCurrent) }} </td>
+                {% else %}
+                    <td class="numeric">{{ numeric.currency(guest.pledgeCurrent) }} </td>
+                {% endif %}
+
+                <td class="numeric">{{ numeric.currency(guest.paid) }} </td>
+
+                {% if not guest.pledgeIsPaid %}
+                    <td class="numeric alert">{{ numeric.currency(guest.balance) }} </td>
+                {% else %}
+                    <td class="numeric">{{ numeric.currency(guest.balance) }} </td>
+                {% endif %}
+
+                <td class="numeric">{{ guest.totalSeats }}</td>
                 <td>{{ guest.honoreeString }}</td>
             </tr>
         {% endfor %}

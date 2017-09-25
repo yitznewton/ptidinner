@@ -111,7 +111,7 @@ class Guest
      */
     public function balance()
     {
-        return $this->pledgeCurrent() - $this->paid;
+        return max(0, $this->pledgeCurrent() - $this->paid);
     }
 
     /**
@@ -313,6 +313,11 @@ class Guest
     public function pledgeIsLow(): bool
     {
         return $this->pledgeCurrent() < $this->pledgePrevious();
+    }
+
+    public function pledgeIsPaid(): bool
+    {
+        return $this->balance() === 0;
     }
 
     public function pledgeIsLacking(): bool

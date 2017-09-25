@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% import _self as adIndex %}
+
+{% macro alertWhenFalse(field, classes) %}
+    {% if field %}
+        <td class="{{ classes }}">Y</td>
+    {% else %}
+        <td class="alert {{ classes }}">n</td>
+    {% endif %}
+{% endmacro %}
+
 {% block title %}Ads | {{ parent() }}{% endblock %}
 
 {% block body %}
@@ -9,28 +19,32 @@
         <div><a href="{{ path('ad_new') }}">Create a new ad</a></div>
     </nav>
 
-    <table>
+    <table class="index">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Type</th>
-                <th>Owner(s)</th>
-                <th>Copy</th>
-                <th>Sent to printer</th>
-                <th>Proof rec'd</th>
-                <th>Proof app'd</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Owner(s)</th>
+            <th>Copy</th>
+            <th>Sent to printer</th>
+            <th>Proof rec'd</th>
+            <th>Proof app'd</th>
+        </tr>
         </thead>
         <tbody>
         {% for ad in ads %}
             <tr>
-                <td><a href="{{ path('ad_edit', { 'id': ad.id }) }}">{{ ad.typeAccession }}</a></td>
+                <td>
+                    <a href="{{ path('ad_edit', { 'id': ad.id }) }}">{{ ad.typeAccession }}</a>
+                </td>
                 <td>{{ ad.adType }}</td>
                 <td>{{ ad.guestString }}</td>
-                <td>{{ ad.copy | truncate(25) }}</td>
-                <td>{% if ad.sentToPrinter %}Y{% else %}n{% endif %}</td>
-                <td>{% if ad.proofFromPrinter %}Y{% else %}n{% endif %}</td>
-                <td>{% if ad.proofApproved %}Y{% else %}n{% endif %}</td>
+                <td>{{ ad.copy | truncate(50) }}</td>
+
+
+                {{ adIndex.alertWhenFalse(ad.sentToPrinter) }}
+                {{ adIndex.alertWhenFalse(ad.proofFromPrinter) }}
+                {{ adIndex.alertWhenFalse(ad.proofApproved) }}
             </tr>
         {% endfor %}
         </tbody>
