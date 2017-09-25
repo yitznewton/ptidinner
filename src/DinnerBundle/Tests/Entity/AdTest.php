@@ -26,7 +26,7 @@ class AdTest extends TestCase
     /**
      * @test
      */
-    public function stringCastShortCopy()
+    public function string_cast_with_short_copy()
     {
         $this->ad->copy = 'abc';
         $this->assertEquals('Gold-123: abc', (string) $this->ad);
@@ -35,7 +35,7 @@ class AdTest extends TestCase
     /**
      * @test
      */
-    public function stringCastCopyTooLong()
+    public function string_cast_when_copy_too_long()
     {
         $this->ad->copy = 'abcdefghijklmnopqrstuvwxyz';
         $this->assertEquals('Gold-123: abcdefghijklmnopqrstuvwxy...', (string) $this->ad);

@@ -18,7 +18,7 @@ class AdTypeTest extends TestCase
     /**
      * @test
      */
-    public function stringCast()
+    public function string_cast()
     {
         $this->assertEquals('Gold', (string) $this->adType);
     }

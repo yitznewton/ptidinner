@@ -24,7 +24,7 @@ class GuestTest extends TestCase
     /**
      * @test
      */
-    public function stringCaseWithWomanOnly()
+    public function string_case_with_woman_only()
     {
         $this->guest->familyName = 'Jameson';
         $this->guest->herName = 'Betty';
@@ -35,7 +35,7 @@ class GuestTest extends TestCase
     /**
      * @test
      */
-    public function stringCaseWithManOnly()
+    public function string_case_with_man_only()
     {
         $this->guest->familyName = 'Jameson';
         $this->guest->hisName = 'Walter';
@@ -46,7 +46,7 @@ class GuestTest extends TestCase
     /**
      * @test
      */
-    public function stringCaseWithManAndWoman()
+    public function string_case_with_man_and_woman()
     {
         $this->guest->familyName = 'Jameson';
         $this->guest->herName = 'Betty';
@@ -58,7 +58,7 @@ class GuestTest extends TestCase
     /**
      * @test
      */
-    public function pledgeLowWhenLow()
+    public function pledge_low_when_low()
     {
         $this->guest->pledge2015 = 1000;
         $this->guest->pledge2016 = 999;
@@ -69,7 +69,7 @@ class GuestTest extends TestCase
     /**
      * @test
      */
-    public function pledgeLowWhenNotLow()
+    public function pledge_low_when_not_low()
     {
         $this->guest->pledge2015 = 1000;
         $this->guest->pledge2016 = 1000;
@@ -80,7 +80,7 @@ class GuestTest extends TestCase
     /**
      * @test
      */
-    public function pledgeLackingWhenLacking()
+    public function pledge_lacking_when_lacking()
     {
         $adType = new AdType();
         $adType->price = 100;
@@ -96,7 +96,7 @@ class GuestTest extends TestCase
     /**
      * @test
      */
-    public function pledgeLackingWhenNotLacking()
+    public function pledge_lacking_when_not_lacking()
     {
         $adType = new AdType();
         $adType->price = 100;
@@ -112,7 +112,7 @@ class GuestTest extends TestCase
     /**
      * @test
      */
-    public function honoreeString()
+    public function honoree_string()
     {
         $honoree1 = new Honoree();
         $honoree2 = new Honoree();
@@ -128,7 +128,7 @@ class GuestTest extends TestCase
     /**
      * @test
      */
-    public function adsCurrent()
+    public function ads_current()
     {
         $adType1 = new AdType();
         $adType2 = new AdType();
@@ -146,7 +146,7 @@ class GuestTest extends TestCase
     /**
      * @test
      */
-    public function totalSeats()
+    public function total_seats()
     {
         $this->guest->paidSeats = 1;
         $this->guest->compSeats = 2;
