@@ -26,7 +26,7 @@ class GuestController extends Controller
 
         $guests = $em->getRepository('DinnerBundle:Guest')->findAll();
 
-        return $this->render('guest/index.html.twig', array(
+        return $this->render('@Dinner/Guest/index.html.twig', array(
             'guests' => $guests,
         ));
     }
@@ -51,7 +51,7 @@ class GuestController extends Controller
             return $this->redirectToRoute('guest_edit', array('id' => $guest->getId()));
         }
 
-        return $this->render('guest/new.html.twig', array(
+        return $this->render('@Dinner/Guest/new.html.twig', array(
             'guest' => $guest,
             'form' => $form->createView(),
         ));
@@ -75,7 +75,7 @@ class GuestController extends Controller
             return $this->redirectToRoute('guest_edit', array('id' => $guest->getId()));
         }
 
-        return $this->render('guest/edit.html.twig', array(
+        return $this->render('@Dinner/Guest/edit.html.twig', array(
             'guest' => $guest,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

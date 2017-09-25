@@ -28,7 +28,7 @@ class AdController extends Controller
 
         $ads = $em->getRepository('DinnerBundle:Ad')->findAll();
 
-        return $this->render('ad/index.html.twig', array(
+        return $this->render('@Dinner/Ad/index.html.twig', array(
             'ads' => $ads,
         ));
     }
@@ -49,7 +49,7 @@ class AdController extends Controller
             return $this->persistAd($ad);
         }
 
-        return $this->render('ad/new.html.twig', array(
+        return $this->render('@Dinner/Ad/new.html.twig', array(
             'ad' => $ad,
             'form' => $form->createView(),
         ));
@@ -72,7 +72,7 @@ class AdController extends Controller
             return $this->persistAd($ad);
         }
 
-        return $this->render('ad/new.html.twig', array(
+        return $this->render('@Dinner/Ad/new.html.twig', array(
             'ad' => $ad,
             'guest' => $guest,
             'form' => $form->createView(),
@@ -97,7 +97,7 @@ class AdController extends Controller
             return $this->redirectToRoute('ad_edit', array('id' => $ad->getId()));
         }
 
-        return $this->render('ad/edit.html.twig', array(
+        return $this->render('@Dinner/Ad/edit.html.twig', array(
             'ad' => $ad,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

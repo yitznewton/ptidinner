@@ -22,8 +22,10 @@
         {{ form_row(form.fax) }}
         {{ form_row(form.email) }}
         {{ form_row(form.referredBy) }}
-        {{ form_row(form.pledge2016) }}
-        {{ form_row(form.paid) }}
+
+        {{ form_row(form.pledge2016, {value: '%01.2f' | format(guest.pledge2016) }) }}
+        {{ form_row(form.paid, {value: '%01.2f' | format(guest.pledge2016) }) }}
+
         {{ form_row(form.paidSeats) }}
         {{ form_row(form.compSeats) }}
         {{ form_row(form.isBusiness) }}
