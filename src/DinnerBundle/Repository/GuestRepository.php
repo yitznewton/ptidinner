@@ -2,7 +2,9 @@
 
 namespace DinnerBundle\Repository;
 
-class GuestRepository extends \Doctrine\ORM\EntityRepository
+use Doctrine\ORM\EntityRepository;
+
+class GuestRepository extends EntityRepository
 {
     public function findAll()
     {

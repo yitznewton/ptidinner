@@ -2,7 +2,9 @@
 
 namespace DinnerBundle\Repository;
 
-class AdRepository extends \Doctrine\ORM\EntityRepository
+use Doctrine\ORM\EntityRepository;
+
+class AdRepository extends EntityRepository
 {
     public function findAll()
     {

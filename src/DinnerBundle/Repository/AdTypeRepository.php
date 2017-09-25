@@ -2,6 +2,8 @@
 
 namespace DinnerBundle\Repository;
 
-class AdTypeRepository extends \Doctrine\ORM\EntityRepository
+use Doctrine\ORM\EntityRepository;
+
+class AdTypeRepository extends EntityRepository
 {
 }

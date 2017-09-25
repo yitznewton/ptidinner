@@ -2,6 +2,8 @@
 
 namespace DinnerBundle\Repository;
 
-class HonoreeRepository extends \Doctrine\ORM\EntityRepository
+use Doctrine\ORM\EntityRepository;
+
+class HonoreeRepository extends EntityRepository
 {
 }
