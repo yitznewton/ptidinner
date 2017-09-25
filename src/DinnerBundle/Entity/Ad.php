@@ -89,7 +89,7 @@ class Ad
      * @var AdType
      *
      * @ORM\ManyToOne(targetEntity="AdType")
-     * @ORM\JoinColumn(name="ad_type_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="ad_type_id", referencedColumnName="id", nullable=false)
      */
     public $adType;
 

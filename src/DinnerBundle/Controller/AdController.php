@@ -143,7 +143,7 @@ class AdController extends Controller
     private function persistAd(Ad $ad)
     {
         $em = $this->getDoctrine()->getManager();
-        (new AdCreateTransaction($em, $ad))->persist();
+        (new AdCreateTransaction($em, $ad))();
 
         return $this->redirectToRoute('ad_edit', array('id' => $ad->getId()));
     }

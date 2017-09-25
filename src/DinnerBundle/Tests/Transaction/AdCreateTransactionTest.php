@@ -31,7 +31,7 @@ class AdCreateTransactionTest extends TestCase
     {
         $em = new MockObjectManager();
         $transaction = new AdCreateTransaction($em, $this->ad);
-        $transaction->persist();
+        $transaction();
 
         $this->assertEquals(3, $this->adType->typeAccessionCount);
     }
@@ -41,7 +41,7 @@ class AdCreateTransactionTest extends TestCase
     {
         $em = new MockObjectManager();
         $transaction = new AdCreateTransaction($em, $this->ad);
-        $transaction->persist();
+        $transaction();
 
         $this->assertEquals('Full-003', $this->ad->typeAccession);
     }
@@ -51,7 +51,7 @@ class AdCreateTransactionTest extends TestCase
     {
         $em = new MockObjectManager();
         $transaction = new AdCreateTransaction($em, $this->ad);
-        $transaction->persist();
+        $transaction();
 
         $this->assertTrue($em->isPersisted([$this->ad, $this->adType]));
     }

@@ -25,7 +25,7 @@ class AdCreateTransaction
         $this->ad = $ad;
     }
 
-    public function persist(): void
+    public function __invoke(): void
     {
         $this->ad->adType->typeAccessionCount++;
         $this->ad->typeAccession = (new TypeAccession($this->ad))->toString();
