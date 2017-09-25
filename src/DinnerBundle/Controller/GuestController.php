@@ -3,6 +3,7 @@
 namespace DinnerBundle\Controller;
 
 use DinnerBundle\Entity\Guest;
+use DinnerBundle\Repository\GuestRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -28,6 +29,7 @@ class GuestController extends Controller
 
         return $this->render('@Dinner/Guest/index.html.twig', array(
             'guests' => $guests,
+            'totals' => $em->getRepository('DinnerBundle:Guest')->totals(),
         ));
     }
 
