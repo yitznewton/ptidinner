@@ -2,6 +2,7 @@
 
 namespace DinnerBundle\Controller;
 
+use DinnerBundle\Form\AdType;
 use DinnerBundle\Transaction\AdCreateTransaction;
 use DinnerBundle\Entity\Ad;
 use DinnerBundle\Entity\Guest;
@@ -10,22 +11,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Ad controller.
- *
  * @Route("ad")
  */
 class AdController extends Controller
 {
     /**
-     * Lists all ad entities.
-     *
      * @Route("/", name="ad_index")
      * @Method("GET")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $ads = $em->getRepository('DinnerBundle:Ad')->findAll();
 
         return $this->render('@Dinner/Ad/index.html.twig', array(
@@ -34,15 +30,15 @@ class AdController extends Controller
     }
 
     /**
-     * Creates a new ad entity.
-     *
      * @Route("/new", name="ad_new")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
         $ad = new Ad();
-        $form = $this->createForm('DinnerBundle\Form\AdType', $ad);
+        $form = $this->createForm(AdType::class, $ad);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -56,16 +52,17 @@ class AdController extends Controller
     }
 
     /**
-     * Creates a new ad entity.
-     *
      * @Route("/new/guest/{id}", name="ad_new_for_guest")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param Guest $guest
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newForGuestAction(Request $request, Guest $guest)
     {
         $ad = new Ad();
         $ad->guests->add($guest);
-        $form = $this->createForm('DinnerBundle\Form\AdType', $ad);
+        $form = $this->createForm(AdType::class, $ad);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -80,15 +77,16 @@ class AdController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing ad entity.
-     *
      * @Route("/{id}/edit", name="ad_edit")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param Ad $ad
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Ad $ad)
     {
         $deleteForm = $this->createDeleteForm($ad);
-        $editForm = $this->createForm('DinnerBundle\Form\AdType', $ad);
+        $editForm = $this->createForm(AdType::class, $ad);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -105,10 +103,11 @@ class AdController extends Controller
     }
 
     /**
-     * Deletes a ad entity.
-     *
      * @Route("/{id}", name="ad_delete")
      * @Method("DELETE")
+     * @param Request $request
+     * @param Ad $ad
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Ad $ad)
     {
@@ -125,8 +124,6 @@ class AdController extends Controller
     }
 
     /**
-     * Creates a form to delete a ad entity.
-     *
      * @param Ad $ad The ad entity
      *
      * @return \Symfony\Component\Form\Form The form

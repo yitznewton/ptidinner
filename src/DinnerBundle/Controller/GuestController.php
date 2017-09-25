@@ -3,28 +3,23 @@
 namespace DinnerBundle\Controller;
 
 use DinnerBundle\Entity\Guest;
-use DinnerBundle\Repository\GuestRepository;
+use DinnerBundle\Form\GuestType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Guest controller.
- *
  * @Route("guest")
  */
 class GuestController extends Controller
 {
     /**
-     * Lists all guest entities.
-     *
      * @Route("/", name="guest_index")
      * @Method("GET")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $guests = $em->getRepository('DinnerBundle:Guest')->findAll();
 
         return $this->render('@Dinner/Guest/index.html.twig', array(
@@ -34,15 +29,15 @@ class GuestController extends Controller
     }
 
     /**
-     * Creates a new guest entity.
-     *
      * @Route("/new", name="guest_new")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
         $guest = new Guest();
-        $form = $this->createForm('DinnerBundle\Form\GuestType', $guest);
+        $form = $this->createForm(GuestType::class, $guest);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -60,15 +55,16 @@ class GuestController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing guest entity.
-     *
      * @Route("/{id}/edit", name="guest_edit")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param Guest $guest
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Guest $guest)
     {
         $deleteForm = $this->createDeleteForm($guest);
-        $editForm = $this->createForm('DinnerBundle\Form\GuestType', $guest);
+        $editForm = $this->createForm(GuestType::class, $guest);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -85,10 +81,11 @@ class GuestController extends Controller
     }
 
     /**
-     * Deletes a guest entity.
-     *
      * @Route("/{id}", name="guest_delete")
      * @Method("DELETE")
+     * @param Request $request
+     * @param Guest $guest
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Guest $guest)
     {
@@ -105,8 +102,6 @@ class GuestController extends Controller
     }
 
     /**
-     * Creates a form to delete a guest entity.
-     *
      * @param Guest $guest The guest entity
      *
      * @return \Symfony\Component\Form\Form The form
