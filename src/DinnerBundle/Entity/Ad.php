@@ -33,7 +33,7 @@ class Ad
      *
      * @ORM\Column(name="copy", type="text", nullable=true)
      */
-    public $copy;
+    public $copy = '';
 
     /**
      * @var string

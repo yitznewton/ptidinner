@@ -1,8 +1,9 @@
 <?php
 
-namespace DinnerBundle;
+namespace DinnerBundle\Transaction;
 
 use DinnerBundle\Entity\Ad;
+use DinnerBundle\TypeAccession;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManager;
 

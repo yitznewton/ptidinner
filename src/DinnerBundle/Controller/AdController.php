@@ -2,7 +2,7 @@
 
 namespace DinnerBundle\Controller;
 
-use DinnerBundle\AdCreateTransaction;
+use DinnerBundle\Transaction\AdCreateTransaction;
 use DinnerBundle\Entity\Ad;
 use DinnerBundle\Entity\Guest;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
