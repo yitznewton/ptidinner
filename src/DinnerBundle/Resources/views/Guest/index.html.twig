@@ -62,8 +62,8 @@
                 <td>{{ guest.herName }}</td>
                 <td>{% if guest.doNotCall %}NOT{% endif %}</td>
                 <td>{{ guest.city }}</td>
-                <td>{{ guest.phone }}</td>
-                <td>{{ guest.mobile }}</td>
+                <td class="phone">{{ guest.phone }}</td>
+                <td class="phone">{{ guest.mobile }}</td>
                 <td class="numeric">{{ numeric.currency(guest.pledge2013) }}</td>
                 <td class="numeric">{{ numeric.currency(guest.pledge2014) }}</td>
 
