@@ -1,5 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-Hello World!
+    <h1>PTI Dinner Accounting Home</h1>
+    <nav>
+        <section>
+            <ul>
+                <li>
+                    <a href="{{ path('guest_index') }}">show guest list</a>
+                </li>
+                <li><a href="{{ path('ad_index') }}">show ads</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Reports</h2>
+
+            <ul>
+                <li>Past donor with no current pledge</li>
+                <li>Pledged and not paid</li>
+                <li>Seated</li>
+            </ul>
+        </section>
+    </nav>
 {% endblock %}
