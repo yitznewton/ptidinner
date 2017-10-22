@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Repository;
+namespace UserBundle\Repository;
 
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
