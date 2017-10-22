@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% import '@Dinner/Common/numeric.html.twig' as numeric %}
+
+{% block title %}Pledged and not paid guests | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1>Pledged and not paid</h1>
+
+    <table class="summary">
+        <tr>
+            <th>Total pledges</th>
+            <td class="numeric">{{ totals.pledgeCurrent }}</td>
+        </tr>
+        <tr>
+            <th>Total paid</th>
+            <td class="numeric">{{ totals.paid }}</td>
+        </tr>
+        <tr>
+            <th>Balance</th>
+            <td class="numeric">{{ totals.balance }}</td>
+        </tr>
+        <tr>
+            <th>Total seats</th>
+            <td class="numeric">{{ totals.totalSeats }}</td>
+        </tr>
+        <tr>
+            <th>Paid seats</th>
+            <td class="numeric">{{ totals.paidSeats }}</td>
+        </tr>
+    </table>
+
+    <nav>
+        <div><a href="{{ path('guest_new') }}">Create a new guest</a></div>
+    </nav>
+
+    <table class="index">
+        <thead>
+        <tr>
+            <th>Family</th>
+            <th>Him
+            <th>Her</th>
+            <th>City</th>
+            <th>Phone</th>
+            <th>Mobile</th>
+            <th>Pledged</th>
+            <th>Paid</th>
+            <th>Balance</th>
+            <th>Affiliation</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for guest in guests %}
+            <tr>
+                <td><a href="{{ path('guest_edit', { 'id': guest.id }) }}">{{ guest.familyName }}</a></td>
+                <td>{{ guest.hisName }}</td>
+                <td>{{ guest.herName }}</td>
+                <td>{{ guest.city }}</td>
+                <td class="phone">{{ guest.phone }}</td>
+                <td class="phone">{{ guest.mobile }}</td>
+
+                {% if guest.pledgeIsLow or not guest.pledgeIsPaid %}
+                    <td class="numeric alert">{{ numeric.currency(guest.pledgeCurrent) }} </td>
+                {% else %}
+                    <td class="numeric">{{ numeric.currency(guest.pledgeCurrent) }} </td>
+                {% endif %}
+
+                <td class="numeric">{{ numeric.currency(guest.paid) }} </td>
+
+                {% if not guest.pledgeIsPaid %}
+                    <td class="numeric alert">{{ numeric.currency(guest.balance) }} </td>
+                {% else %}
+                    <td class="numeric">{{ numeric.currency(guest.balance) }} </td>
+                {% endif %}
+
+                <td>{{ guest.honoreeString }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <nav>
+        <div><a href="{{ path('guest_new') }}">Create a new guest</a></div>
+    </nav>
+{% endblock %}
