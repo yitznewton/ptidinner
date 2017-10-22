@@ -5,10 +5,21 @@ namespace DinnerBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * @Route("/reports")
+ */
 class ReportController extends Controller
 {
     /**
-     * @Route("/reports/seated", name="report_seated")
+     * @Route("/")
+     */
+    public function indexRedirectAction()
+    {
+        return $this->redirectToRoute('home');
+    }
+
+    /**
+     * @Route("/seated", name="report_seated")
      */
     public function seatedAction()
     {
@@ -22,7 +33,7 @@ class ReportController extends Controller
     }
 
     /**
-     * @Route("/reports/pledged-not-paid", name="report_pledged_not_paid")
+     * @Route("/pledged-not-paid", name="report_pledged_not_paid")
      */
     public function pledgedNotPaidAction()
     {
