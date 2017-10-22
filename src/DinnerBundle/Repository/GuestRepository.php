@@ -31,4 +31,16 @@ EOD
 
         return $query->getResult()[0];
     }
+
+    public function seated()
+    {
+        $query = $this->getEntityManager()->createQuery(<<<EOD
+            SELECT g FROM DinnerBundle\Entity\Guest g
+            WHERE g.paidSeats + g.compSeats > 0
+            ORDER BY g.familyName, g.hisName, g.herName
+EOD
+        );
+
+        return $query->getResult();
+    }
 }
