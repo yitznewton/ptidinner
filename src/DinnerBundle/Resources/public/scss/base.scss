@@ -52,7 +52,7 @@ table.summary {
     }
 }
 
-.guest-form, .ad-form, .login-form, .user-form {
+.guest-form, .ad-form, .login-form, .user-form, .register-form {
     label, .label {
         float: left;
         text-align: right;
@@ -103,7 +103,7 @@ table.summary {
     }
 }
 
-.login-form {
+.login-form, .register-form {
     label, .label {
         font-weight: normal;
         width: 10%;
