@@ -1,15 +1,16 @@
-app_user:
-    resource: "@AppBundle/Controller/UserController.php"
+user:
+    resource: "@UserBundle/Controller/"
     type:     annotation
+    prefix:   /users/
 
 dinner:
     resource: "@DinnerBundle/Controller/"
     type:     annotation
     prefix:   /
 
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 app:
     resource: "@AppBundle/Controller/"
     type: annotation
-
-fos_user_security:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

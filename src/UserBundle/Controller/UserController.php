@@ -1,17 +1,12 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace UserBundle\Controller;
 
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
-/**
- * User controller.
- *
- * @Route("users")
- */
 class UserController extends Controller
 {
     /**
@@ -26,7 +21,7 @@ class UserController extends Controller
 
         $users = $em->getRepository('AppBundle:User')->findAll();
 
-        return $this->render('user/index.html.twig', array(
+        return $this->render('@User/user/index.html.twig', array(
             'users' => $users,
         ));
     }
@@ -51,7 +46,7 @@ class UserController extends Controller
             return $this->redirectToRoute('user_index');
         }
 
-        return $this->render('user/new.html.twig', array(
+        return $this->render('@User/user/new.html.twig', array(
             'user' => $user,
             'form' => $form->createView(),
         ));
@@ -75,7 +70,7 @@ class UserController extends Controller
             return $this->redirectToRoute('user_index');
         }
 
-        return $this->render('user/edit.html.twig', array(
+        return $this->render('@User/user/edit.html.twig', array(
             'user' => $user,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
