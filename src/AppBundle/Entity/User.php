@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends \FOS\UserBundle\Model\User
 {
+    const DEFAULT_GARBAGE_PASSWORD = 'qwertyuiop';
+
     /**
      * @var int
      *

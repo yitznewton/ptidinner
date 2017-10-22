@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User {{ user.username }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1>User edit</h1>
+
+    <section class="user-form">
+        {{ form_start(edit_form) }}
+        {{ form_row(edit_form.username) }}
+        {{ form_row(edit_form.email) }}
+        {{ form_row(edit_form.enabled) }}
+        {{ form_row(edit_form.roles) }}
+        <div>
+            <div class="label">&nbsp;</div>
+            <div>
+                <input type="submit" value="Save"/>
+            </div>
+        </div>
+        {{ form_end(edit_form) }}
+
+        <div>
+            <div class="label">&nbsp;</div>
+            <div>
+                <nav class="form-controls">
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_index') }}">Cancel</a>
+                        </li>
+                        <li>
+                            {{ form_start(delete_form, {attr: {class: 'confirm-on-submit'}}) }}
+                            <input type="submit" value="Delete">
+                            {{ form_end(delete_form) }}
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+{% endblock %}

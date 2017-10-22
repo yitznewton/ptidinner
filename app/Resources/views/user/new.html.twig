@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New user | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1>New user</h1>
+
+    <section class="user-form">
+        {{ form_start(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.enabled) }}
+        {{ form_row(form.roles) }}
+        <div>
+            <div class="label">&nbsp;</div>
+            <div>
+                <input type="submit" value="Create"/>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+        <div>
+            <div class="label">&nbsp;</div>
+            <div>
+                <nav class="form-controls">
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_index') }}">Cancel</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+{% endblock %}

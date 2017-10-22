@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1>Users</h1>
+
+    <table class="index">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Enabled</th>
+                <th>Roles</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td><a href="{{ path('user_edit', { 'id': user.id }) }}">{{ user.username }}</a></td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.enabled ? '✓' : '✕' }}</td>
+                <td>{{ user.roles | join(', ') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_new') }}">Create a new user</a>
+        </li>
+    </ul>
+{% endblock %}
