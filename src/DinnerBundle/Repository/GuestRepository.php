@@ -55,4 +55,17 @@ EOD
 
         return $query->getResult();
     }
+
+    public function pastDonorNoPledge()
+    {
+        $query = $this->getEntityManager()->createQuery(<<<EOD
+            SELECT g FROM DinnerBundle\Entity\Guest g
+            WHERE g.pledge2016 = 0
+            AND g.pledge2014 + g.pledge2015 > 0
+            ORDER BY g.familyName, g.hisName, g.herName
+EOD
+        );
+
+        return $query->getResult();
+    }
 }

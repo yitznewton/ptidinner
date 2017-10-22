@@ -35,4 +35,19 @@ class ReportController extends Controller
             'totals' => $em->getRepository('DinnerBundle:Guest')->totals(),
         ]);
     }
+
+    /**
+     * @Route("/reports/past-donor-no-pledge", name="report_past_donor_no_pledge")
+     */
+    public function pastDonorNoPledgeAction()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $guests = $em->getRepository('DinnerBundle:Guest')->pastDonorNoPledge();
+
+        return $this->render('DinnerBundle:Report:past_donor_no_pledge.html.twig', [
+            'guests' => $guests,
+            'totals' => $em->getRepository('DinnerBundle:Guest')->totals(),
+        ]);
+    }
 }

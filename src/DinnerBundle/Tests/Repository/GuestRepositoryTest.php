@@ -71,6 +71,25 @@ class GuestRepositoryTest extends KernelTestCase
         }, $this->repository->pledgedNotPaid())));
     }
 
+    /**
+     * @test
+     */
+    public function past_donor_no_pledge()
+    {
+        $neverPledgedGuest = $this->hydrate(['family_name' => 'Abel', 'pledge_current' => 0.0, 'pledge_2015' => 0.0]);
+        $underPledgedGuest = $this->hydrate(['family_name' => 'Stetson', 'pledge_current' => 55.0, 'pledge_2015' => 100.0]);
+        $pastDonorNoPledgeGuest = $this->hydrate(['family_name' => 'Yterby', 'pledge_current' => 0.0, 'pledge_2015' => 100.0]);
+
+        $this->em->persist($pastDonorNoPledgeGuest);
+        $this->em->persist($underPledgedGuest);
+        $this->em->persist($neverPledgedGuest);
+        $this->em->flush();
+
+        $this->assertEquals(['Yterby'], toArray(map(function ($g) {
+            return $g->familyName;
+        }, $this->repository->pastDonorNoPledge())));
+    }
+
     private function hydrate($data)
     {
         return $this->hydrator->hydrate(Guest::class, $data);

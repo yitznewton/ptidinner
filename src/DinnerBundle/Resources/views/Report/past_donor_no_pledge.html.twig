@@ -2,10 +2,10 @@
 
 {% import '@Dinner/Common/numeric.html.twig' as numeric %}
 
-{% block title %}Pledged and not paid guests | {{ parent() }}{% endblock %}
+{% block title %}Past donors with no pledge | {{ parent() }}{% endblock %}
 
 {% block body %}
-    <h1>Pledged and not paid</h1>
+    <h1>Past donors with no pledge</h1>
 
     <table class="summary">
         <tr>
@@ -43,9 +43,9 @@
             <th>City</th>
             <th>Phone</th>
             <th>Mobile</th>
+            <th>2014</th>
+            <th>2015</th>
             <th>Pledged</th>
-            <th>Paid</th>
-            <th>Balance</th>
             <th>Affiliation</th>
         </tr>
         </thead>
@@ -60,9 +60,9 @@
                 <td>{{ guest.city }}</td>
                 <td class="phone">{{ guest.phone }}</td>
                 <td class="phone">{{ guest.mobile }}</td>
+                <td class="numeric">{{ numeric.currency(guest.pledge2014) }}</td>
+                <td class="numeric">{{ numeric.currency(guest.pledge2015) }}</td>
                 <td class="numeric">{{ numeric.currency(guest.pledgeCurrent) }} </td>
-                <td class="numeric">{{ numeric.currency(guest.paid) }} </td>
-                <td class="numeric">{{ numeric.currency(guest.balance) }} </td>
                 <td>{{ guest.honoreeString }}</td>
             </tr>
         {% endfor %}
