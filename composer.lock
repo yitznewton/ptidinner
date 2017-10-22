@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e126988e8c1f933fb4e824a2eb31e5df",
+    "content-hash": "17fdec741f0059f68cdfb2b28a91d763",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -2547,6 +2547,62 @@
                 "object graph"
             ],
             "time": "2017-04-12T18:52:22+00:00"
+        },
+        {
+            "name": "nemesis/doctrine-array-hydrator",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nemesis1988/doctrine-array-hydrator.git",
+                "reference": "82c3399e2f45b1f68683a7e53f44a702b84dba74"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nemesis1988/doctrine-array-hydrator/zipball/82c3399e2f45b1f68683a7e53f44a702b84dba74",
+                "reference": "82c3399e2f45b1f68683a7e53f44a702b84dba74",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "^2.5"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "4.8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "nemesis\\Doctrine\\Hydrator\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "nemesis\\Doctrine\\Hydrator\\Test\\": "tests/unit/",
+                    "nemesis\\Doctrine\\Hydrator\\Test\\Fixture\\": "tests/fixtures/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "pmill",
+                    "email": "dev.pmill@gmail.com"
+                }
+            ],
+            "description": " An array to entity hydrator for Doctrine 2 entities ",
+            "homepage": "https://github.com/nemesis/doctrine-array-hydrator",
+            "keywords": [
+                "array",
+                "doctrine",
+                "hydrator",
+                "php"
+            ],
+            "support": {
+                "source": "https://github.com/nemesis1988/doctrine-array-hydrator/tree/1.0.1"
+            },
+            "time": "2017-08-08T06:41:58+00:00"
         },
         {
             "name": "nikic/iter",
