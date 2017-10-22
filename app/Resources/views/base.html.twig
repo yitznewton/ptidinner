@@ -18,6 +18,13 @@
         <a href="{{ path('home') }}">Home</a>
     </nav>
 {% endblock %}
+
+{% block logoutlink %}
+    <nav class="logout">
+        <a href="{{ path('fos_user_security_logout') }}">logout</a>
+    </nav>
+{% endblock %}
+
 {% block body %}{% endblock %}
 {% block javascripts %}
     {% javascripts 'bundles/dinner/js/*.js' %}

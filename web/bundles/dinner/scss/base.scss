@@ -17,6 +17,10 @@ td.numeric {
     background: pink;
 }
 
+.logout {
+    float: right;
+}
+
 .index {
     border-collapse: collapse;
     margin: 1em 0;
@@ -48,7 +52,7 @@ table.summary {
     }
 }
 
-.guest-form, .ad-form {
+.guest-form, .ad-form, .login-form {
     label, .label {
         float: left;
         text-align: right;
@@ -96,6 +100,17 @@ table.summary {
 
     .add-ad {
         margin: 1em 0 0;
+    }
+}
+
+.login-form {
+    label, .label {
+        font-weight: normal;
+        width: 10%;
+    }
+
+    .reset {
+        margin: 0.6em 0 0;
     }
 }
 
