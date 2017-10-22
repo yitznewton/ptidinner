@@ -1,0 +1,18 @@
+{% extends '@FOSUser/layout.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+
+    <section class="register-form">
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.plainPassword) }}
+        <div>
+            <input type="submit" value="{{ 'registration.submit'|trans }}"/>
+        </div>
+        {{ form_end(form) }}
+    </section>
+
+{% endblock %}
