@@ -13,6 +13,11 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
+{% block homelink %}
+    <nav>
+        <a href="{{ path('home') }}">Home</a>
+    </nav>
+{% endblock %}
 {% block body %}{% endblock %}
 {% block javascripts %}
     {% javascripts 'bundles/dinner/js/*.js' %}
