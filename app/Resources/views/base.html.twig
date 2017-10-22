@@ -5,7 +5,7 @@
     <title>{% block title %}PTI Dinner Accounting{% endblock %}</title>
     {% block stylesheets %}
         {% stylesheets filter="scssphp" output="css/dinner.css"
-        "@AppBundle/Resources/public/scss/*.scss"
+        "scss/*.scss"
         "@DinnerBundle/Resources/public/scss/*.scss" %}
         <link rel="stylesheet" href="{{ asset_url }}"/>
         <link
