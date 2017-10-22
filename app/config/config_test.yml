@@ -20,10 +20,3 @@ doctrine:
         driver: pdo_sqlite
         memory: true
         charset: UTF8
-
-fos_user:
-    db_driver: orm
-    firewall_name: main
-    user_class: AppBundle\Entity\User
-    from_email:
-        address: nobody@example.com
