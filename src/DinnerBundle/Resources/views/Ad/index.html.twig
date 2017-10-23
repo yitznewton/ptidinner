@@ -15,6 +15,8 @@
 {% block body %}
     <h1>Ads list</h1>
 
+    {{ render(controller('DinnerBundle:Report:totals')) }}
+
     <nav>
         <div><a href="{{ path('ad_new') }}">Create a new ad</a></div>
     </nav>

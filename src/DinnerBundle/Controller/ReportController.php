@@ -52,12 +52,20 @@ class ReportController extends Controller
      */
     public function pastDonorNoPledgeAction()
     {
-
         $em = $this->getDoctrine()->getManager();
         $guests = $em->getRepository('DinnerBundle:Guest')->pastDonorNoPledge();
 
         return $this->render('DinnerBundle:Report:past_donor_no_pledge.html.twig', [
             'guests' => $guests,
+            'totals' => $em->getRepository('DinnerBundle:Guest')->totals(),
+        ]);
+    }
+
+    public function totalsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        return $this->render('@Dinner/Report/totals.html.twig', [
             'totals' => $em->getRepository('DinnerBundle:Guest')->totals(),
         ]);
     }

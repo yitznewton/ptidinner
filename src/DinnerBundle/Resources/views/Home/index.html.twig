@@ -4,6 +4,9 @@
 
 {% block body %}
     <h1>PTI Dinner Accounting Home</h1>
+
+    {{ render(controller('DinnerBundle:Report:totals')) }}
+
     <nav>
         <section>
             <ul>
