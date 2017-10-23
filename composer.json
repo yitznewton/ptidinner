@@ -54,7 +54,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::dumpAssetic",
-            "./bin/console doctrine:migrations:migrate",
+            "if [ $SYMFONY_ENV == prod ] ; then ./bin/console doctrine:migrations:migrate; fi",
             "./bin/console assetic:dump"
         ],
         "post-install-cmd": [
