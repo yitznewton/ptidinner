@@ -64,7 +64,6 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
-# Swiftmailer Configuration
 swiftmailer:
     transport: smtp
     host: '%env(MAILER_HOST)%'
@@ -77,5 +76,5 @@ fos_user:
     firewall_name: main
     user_class: UserBundle\Entity\User
     from_email:
-        address: "%mailer_user%"
-        sender_name: "%mailer_user%"
+        address: yitzchak.schaffer@gmail.com
+        sender_name: Yitzchak Schaffer
