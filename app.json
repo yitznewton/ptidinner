@@ -1,5 +1,0 @@
-{
-    "scripts": {
-        "postdeploy": "./bin/console assetic:dump"
-    }
-}
