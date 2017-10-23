@@ -41,7 +41,7 @@
     "require-dev": {
         "nemesis/doctrine-array-hydrator": "^1.0",
         "nikic/iter": "^1.5",
-        "phpunit/phpunit": "~6.3.0",
+        "phpunit/phpunit": "~6.4",
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"
     },
@@ -54,7 +54,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::dumpAssetic",
-            "./bin/console doctrine:migrations:migrate",
+            "if test $SYMFONY_ENV = prod ; then ./bin/console doctrine:migrations:migrate; fi",
             "./bin/console assetic:dump"
         ],
         "post-install-cmd": [
