@@ -48,7 +48,7 @@ EOD
     {
         $query = $this->getEntityManager()->createQuery(<<<EOD
             SELECT g FROM DinnerBundle\Entity\Guest g
-            WHERE g.paid < g.pledge2016
+            WHERE g.paid < g.pledge2017
             ORDER BY g.familyName, g.hisName, g.herName
 EOD
         );
@@ -60,8 +60,8 @@ EOD
     {
         $query = $this->getEntityManager()->createQuery(<<<EOD
             SELECT g FROM DinnerBundle\Entity\Guest g
-            WHERE g.pledge2016 = 0
-            AND g.pledge2014 + g.pledge2015 > 0
+            WHERE g.pledge2017 = 0
+            AND g.pledge2015 + g.pledge2016 > 0
             ORDER BY g.familyName, g.hisName, g.herName
 EOD
         );
