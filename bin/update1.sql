@@ -6,7 +6,7 @@ alter table guests
 ;
 
 -- remove PTI, PP, OOT affiliation
-delete from honoree_guest_assoc where honoree_id IN (1, 5, 28);
+delete from honoree_guest_assoc where honoree_id IN (1, 5, 31);
 
 update guests
   set pledge_2016=paid,

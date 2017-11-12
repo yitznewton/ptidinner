@@ -3,6 +3,7 @@
 namespace DinnerBundle\Loader;
 
 use DinnerBundle\Entity\Guest;
+use DinnerBundle\Entity\Honoree;
 use DinnerBundle\Repository\GuestRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -13,12 +14,14 @@ class PTI implements Loader
     private $em;
 
     /** @var GuestRepository */
-    private $repository;
+    private $guestRepository;
+    private $outOfTown;
 
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
-        $this->repository = $this->em->getRepository('DinnerBundle:Guest');
+        $this->guestRepository = $this->em->getRepository('DinnerBundle:Guest');
+        $this->outOfTown = $this->em->getRepository(Honoree::class)->findOneBy(['code' => 'OOT']);
     }
 
     public function load(array $row, OutputInterface $output): void
@@ -33,7 +36,7 @@ class PTI implements Loader
 
     private function matchOnNames(array $row): ?Guest
     {
-        return $this->repository->findOneBy([
+        return $this->guestRepository->findOneBy([
             'familyName' => $row['familyName'],
             'hisName' => $row['hisName'],
             'herName' => $row['herName'],
@@ -51,5 +54,9 @@ class PTI implements Loader
         $guest->zip = $guest->zip ?: $row['zip'];
         $guest->phone = $guest->phone ?: $row['phone'];
         $guest->mobile = $guest->mobile ?: $row['mobile'];
+
+        if (!in_array($guest->city, ['Passaic', 'Clifton'])) {
+            $guest->honorees->add($this->outOfTown);
+        }
     }
 }
