@@ -36,7 +36,8 @@ abstract class AbstractLoadCommand extends ContainerAwareCommand
         $fields = explode("\t", trim(fgets($fh)));
 
         while ($line = trim(fgets($fh))) {
-            $row = array_combine($fields, explode("\t", $line));
+            $columns = array_pad(explode("\t", $line), count($fields), '');
+            $row = array_combine($fields, $columns);
             $loader->load($row, $output);
         }
 
