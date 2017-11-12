@@ -7,7 +7,7 @@ use DinnerBundle\Repository\GuestRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class YKP
+class YKP implements Loader
 {
     /** @var EntityManager */
     private $em;
@@ -29,7 +29,6 @@ class YKP
         $output->writeln('Updating guest ' . $guest->__toString());
 
         $this->em->persist($guest);
-        $this->em->flush();
     }
 
     private function matchOnId(array $row): ?Guest
@@ -52,7 +51,7 @@ class YKP
         $guest->hisName = $guest->hisName ?: $row['hisName'];
         $guest->herName = $guest->herName ?: $row['herName'];
         $guest->ykpId = $guest->ykpId ?: $row['ykpId'];
-        
+
         $guest->streetAddress = $row['streetAddress'];
         $guest->city = $row['city'];
         $guest->state = $row['state'];
