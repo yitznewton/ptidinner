@@ -22,8 +22,8 @@
             <th>City</th>
             <th>Phone</th>
             <th>Mobile</th>
-            <th>2014</th>
             <th>2015</th>
+            <th>2016</th>
             <th>Pledged</th>
             <th>Affiliation</th>
         </tr>
@@ -39,8 +39,8 @@
                 <td>{{ guest.city }}</td>
                 <td class="phone">{{ guest.phone }}</td>
                 <td class="phone">{{ guest.mobile }}</td>
-                <td class="numeric">{{ numeric.currency(guest.pledge2014) }}</td>
                 <td class="numeric">{{ numeric.currency(guest.pledge2015) }}</td>
+                <td class="numeric">{{ numeric.currency(guest.pledgePrevious) }}</td>
                 <td class="numeric">{{ numeric.currency(guest.pledgeCurrent) }} </td>
                 <td>{{ guest.honoreeString }}</td>
             </tr>

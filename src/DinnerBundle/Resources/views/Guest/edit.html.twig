@@ -25,11 +25,6 @@
         {{ form_row(edit_form.referredBy) }}
 
         <div>
-            <div class="label">Pledge 2013</div>
-            <div>{{ numeric.currency(guest.pledge2013) }}</div>
-        </div>
-
-        <div>
             <div class="label">Pledge 2014</div>
             <div>{{ numeric.currency(guest.pledge2014) }}</div>
         </div>
@@ -39,8 +34,13 @@
             <div>{{ numeric.currency(guest.pledge2015) }}</div>
         </div>
 
-        {{ form_row(edit_form.pledge2016, {value: numeric.currency(guest.pledge2016) }) }}
-        {{ form_row(edit_form.paid, {value: numeric.currency(guest.pledge2016) }) }}
+        <div>
+            <div class="label">Pledge 2016</div>
+            <div>{{ numeric.currency(guest.pledge2016) }}</div>
+        </div>
+
+        {{ form_row(edit_form.pledge2017, {value: numeric.currency(guest.pledge2017) }) }}
+        {{ form_row(edit_form.paid, {value: numeric.currency(guest.paid) }) }}
 
         <div>
             <div class="label">Sum of current ad values</div>

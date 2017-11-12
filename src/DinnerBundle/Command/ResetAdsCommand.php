@@ -24,12 +24,9 @@ class ResetAdsCommand extends ContainerAwareCommand
             foreach ($guest->ads as $ad) {
                 $guest->previousAdCopy .= "\n\n===========\n\n" . $ad->copy;
             }
-
-            $guest->ads->clear();
         }
 
-        $em->getRepository(Ad::class)->clear();
-
+        $em->createQueryBuilder()->delete(Ad::class)->getQuery()->execute();
         $em->flush();
     }
 }
