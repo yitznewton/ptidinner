@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(name="ads")
  * @ORM\Entity(repositoryClass="DinnerBundle\Repository\AdRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Ad
 {
@@ -106,6 +107,16 @@ class Ad
     public function price(): int
     {
         return $this->adType->price;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function updateGuestString(): void
+    {
+        $this->guestString = join(', ', $this->guests->map(function($guest) {
+            return $guest->familyName;
+        })->toArray());
     }
 
     private function truncatedCopy(): string
