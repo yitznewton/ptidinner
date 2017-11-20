@@ -127,7 +127,7 @@ class Ad
         if (strlen($copy) > $len) {
             return substr($copy, 0, $len) . '...';
         } else {
-            return $copy;
+            return $copy ?: '';
         }
     }
 }
