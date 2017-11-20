@@ -101,6 +101,12 @@ class Ad
 
     public function __toString(): string
     {
+        $copy = $this->truncatedCopy();
+
+        if (!$copy) {
+            return $this->typeAccession;
+        }
+
         return $this->typeAccession . ': ' . $this->truncatedCopy();
     }
 

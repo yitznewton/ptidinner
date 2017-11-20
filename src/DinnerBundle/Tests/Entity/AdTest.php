@@ -37,6 +37,15 @@ class AdTest extends TestCase
     /**
      * @test
      */
+    public function string_cast_when_no_copy()
+    {
+        $this->ad->copy = null;
+        $this->assertEquals('Gold-123', $this->ad->__toString());
+    }
+
+    /**
+     * @test
+     */
     public function guest_string()
     {
         $guest1 = new Guest();
