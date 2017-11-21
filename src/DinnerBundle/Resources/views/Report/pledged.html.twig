@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% import '@Dinner/Common/numeric.html.twig' as numeric %}
+
+{% block title %}All pledges | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1>All pledges</h1>
+
+    {{ render(controller('DinnerBundle:Report:totals')) }}
+
+    <nav>
+        <div><a href="{{ path('guest_new') }}">Create a new guest</a></div>
+    </nav>
+
+    <table class="index">
+        <thead>
+        <tr>
+            <th>Family</th>
+            <th>Him
+            <th>Her</th>
+            <th>City</th>
+            <th>Phone</th>
+            <th>Mobile</th>
+            <th>Pledged</th>
+            <th>Paid</th>
+            <th>Balance</th>
+            <th>Affiliation</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for guest in guests %}
+            <tr>
+                <td>
+                    <a href="{{ path('guest_edit', { 'id': guest.id }) }}">{{ guest.familyName }}</a>
+                </td>
+                <td>{{ guest.hisName }}</td>
+                <td>{{ guest.herName }}</td>
+                <td>{{ guest.city }}</td>
+                <td class="phone">{{ guest.phone }}</td>
+                <td class="phone">{{ guest.mobile }}</td>
+                <td class="numeric">{{ numeric.currency(guest.pledgeCurrent) }} </td>
+                <td class="numeric">{{ numeric.currency(guest.paid) }} </td>
+                <td class="numeric">{{ numeric.currency(guest.balance) }} </td>
+                <td>{{ guest.honoreeString }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <nav>
+        <div><a href="{{ path('guest_new') }}">Create a new guest</a></div>
+    </nav>
+{% endblock %}

@@ -44,6 +44,18 @@ EOD
         return $query->getResult();
     }
 
+    public function pledged()
+    {
+        $query = $this->getEntityManager()->createQuery(<<<EOD
+            SELECT g FROM DinnerBundle\Entity\Guest g
+            WHERE g.pledge2017 > 0
+            ORDER BY g.familyName, g.hisName, g.herName
+EOD
+        );
+
+        return $query->getResult();
+    }
+
     public function pledgedNotPaid()
     {
         $query = $this->getEntityManager()->createQuery(<<<EOD

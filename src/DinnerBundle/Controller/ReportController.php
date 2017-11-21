@@ -33,11 +33,24 @@ class ReportController extends Controller
     }
 
     /**
+     * @Route("/all-pledges", name="report_pledged")
+     */
+    public function pledgedAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $guests = $em->getRepository('DinnerBundle:Guest')->pledged();
+
+        return $this->render('DinnerBundle:Report:pledged.html.twig', [
+            'guests' => $guests,
+            'totals' => $em->getRepository('DinnerBundle:Guest')->totals(),
+        ]);
+    }
+
+    /**
      * @Route("/pledged-not-paid", name="report_pledged_not_paid")
      */
     public function pledgedNotPaidAction()
     {
-
         $em = $this->getDoctrine()->getManager();
         $guests = $em->getRepository('DinnerBundle:Guest')->pledgedNotPaid();
 
