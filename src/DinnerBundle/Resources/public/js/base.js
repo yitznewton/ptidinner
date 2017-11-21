@@ -14,5 +14,6 @@
 
     document.querySelector('.approve-button').addEventListener('click', function () {
         approvedCheckbox.checked = true;
+        this.form.submit();
     });
 })();
