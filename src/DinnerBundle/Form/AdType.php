@@ -3,6 +3,7 @@
 namespace DinnerBundle\Form;
 
 use DinnerBundle\Entity\Guest;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -23,7 +24,14 @@ class AdType extends AbstractType
             ->add('sentToPrinter', DateType::class, ['widget' => 'single_text', 'required' => false])
             ->add('proofFromPrinter', DateType::class, ['widget' => 'single_text', 'required' => false])
             ->add('proofApproved')
-            ->add('guests', EntityType::class, ['class' => Guest::class, 'label' => 'This ad is for', 'multiple' => true]);
+            ->add('guests', EntityType::class, [
+                'class' => Guest::class,
+                'label' => 'This ad is for',
+                'multiple' => true,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('g')->orderBy('g.familyName, g.hisName', 'ASC');
+                },
+            ]);
     }
 
     /**
