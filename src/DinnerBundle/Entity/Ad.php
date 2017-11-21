@@ -116,6 +116,7 @@ class Ad
     }
 
     /**
+     * @ORM\PrePersist
      * @ORM\PreUpdate
      */
     public function updateGuestString(): void
