@@ -19,7 +19,10 @@
             <th>Family</th>
             <th>Him
             <th>Her</th>
+            <th>Address</th>
             <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
             <th>Phone</th>
             <th>Mobile</th>
             <th>2015</th>
@@ -36,7 +39,10 @@
                 </td>
                 <td>{{ guest.hisName }}</td>
                 <td>{{ guest.herName }}</td>
+                <td>{{ guest.streetAddress }}</td>
                 <td>{{ guest.city }}</td>
+                <td>{{ guest.state }}</td>
+                <td>{{ guest.zip }}</td>
                 <td class="phone">{{ guest.phone }}</td>
                 <td class="phone">{{ guest.mobile }}</td>
                 <td class="numeric">{{ numeric.currency(guest.pledge2015) }}</td>
