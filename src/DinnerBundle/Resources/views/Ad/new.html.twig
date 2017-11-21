@@ -11,7 +11,15 @@
         {{ form_row(form.adType) }}
         {{ form_row(form.copy) }}
         {{ form_row(form.note) }}
-        {{ form_row(form.sentToPrinter) }}
+
+        <div>
+            {{ form_label(form.sentToPrinter) }}
+            <div>
+                {{ form_widget(form.sentToPrinter) }}
+                <button class="sent-to-printer-button" type="button">Send now</button>
+            </div>
+        </div>
+
         {{ form_row(form.proofFromPrinter) }}
         {{ form_row(form.proofApproved) }}
         {{ form_row(form.guests) }}

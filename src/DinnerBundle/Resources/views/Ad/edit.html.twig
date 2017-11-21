@@ -28,7 +28,15 @@
 
         {{ form_row(edit_form.copy) }}
         {{ form_row(edit_form.note) }}
-        {{ form_row(edit_form.sentToPrinter) }}
+
+        <div>
+            {{ form_label(edit_form.sentToPrinter) }}
+            <div>
+                {{ form_widget(edit_form.sentToPrinter) }}
+                <button class="sent-to-printer-button" type="button">Send now</button>
+            </div>
+        </div>
+
         {{ form_row(edit_form.proofFromPrinter) }}
 
         <div>
