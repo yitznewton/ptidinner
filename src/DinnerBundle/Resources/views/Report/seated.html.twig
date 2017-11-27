@@ -17,7 +17,8 @@
         <thead>
         <tr>
             <th>Family</th>
-            <th>Him
+            <th>Title</th>
+            <th>Him</th>
             <th>Her</th>
             <th>Address</th>
             <th>City</th>
@@ -36,6 +37,7 @@
         {% for guest in guests %}
             <tr>
                 <td><a href="{{ path('guest_edit', { 'id': guest.id }) }}">{{ guest.familyName }}</a></td>
+                <td>{{ guest.title }}</td>
                 <td>{{ guest.hisName }}</td>
                 <td>{{ guest.herName }}</td>
                 <td>{{ guest.streetAddress }}</td>
