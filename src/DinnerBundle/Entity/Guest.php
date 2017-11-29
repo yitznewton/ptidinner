@@ -228,6 +228,13 @@ class Guest
     public $honoreeString;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="ad_types")
+     */
+    public $adTypes = '';
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="is_business", type="boolean")
@@ -295,11 +302,6 @@ class Guest
         );
     }
 
-    public function adsCurrent(): string
-    {
-        return join(', ', $this->adTypes());
-    }
-
     /**
      * @return string[]
      */
@@ -342,5 +344,14 @@ class Guest
         $this->honoreeString = join(', ', $this->honorees->map(function($honoree) {
             return $honoree->code;
         })->toArray());
+    }
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function updateAdTypes(): void
+    {
+        $this->adTypes = join(', ', $this->adTypes());
     }
 }
