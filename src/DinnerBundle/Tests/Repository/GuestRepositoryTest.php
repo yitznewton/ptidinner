@@ -1,34 +1,16 @@
 <?php
 
+namespace DinnerBundle\Tests\Repository;
+
 use DinnerBundle\Entity\Guest;
-use Doctrine\ORM\Tools\SchemaTool;
 use function iter\map;
 use function iter\toArray;
-use nemesis\Doctrine\Hydrator\ArrayHydrator;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class GuestRepositoryTest extends KernelTestCase
+class GuestRepositoryTest extends RepositoryTestCase
 {
-    /** @var \Doctrine\ORM\EntityManager */
-    private $em;
-
-    /** @var \DinnerBundle\Repository\GuestRepository */
-    private $repository;
-
-    /** @var ArrayHydrator */
-    private $hydrator;
-
-    public function setUp()
+    static protected function entityClass(): string
     {
-        self::bootKernel();
-
-        $this->em = self::$kernel->getContainer()->get('doctrine')->getManager();
-        $this->repository = $this->em->getRepository(Guest::class);
-        $this->hydrator = new ArrayHydrator($this->em);
-
-        $metadata = $this->em->getMetadataFactory()->getAllMetadata();
-        $schemaTool = new SchemaTool($this->em);
-        $schemaTool->updateSchema($metadata);
+        return Guest::class;
     }
 
     /**
@@ -90,8 +72,4 @@ class GuestRepositoryTest extends KernelTestCase
         }, $this->repository->pastDonorNoPledge())));
     }
 
-    private function hydrate($data)
-    {
-        return $this->hydrator->hydrate(Guest::class, $data);
-    }
 }
