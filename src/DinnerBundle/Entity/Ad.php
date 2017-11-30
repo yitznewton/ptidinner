@@ -126,6 +126,17 @@ class Ad
         })->toArray());
     }
 
+    /**
+     * @ORM\PreRemove
+     */
+    public function updateGuest(): void
+    {
+        foreach ($this->guests as $guest) {
+            $guest->ads->removeElement($this);
+            $guest->updateAdTypes();
+        }
+    }
+
     private function truncatedCopy(): string
     {
         $len = 25;
