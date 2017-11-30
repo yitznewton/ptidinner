@@ -232,7 +232,7 @@ class Guest
      *
      * @ORM\Column(name="ad_types")
      */
-    public $adTypes = '';
+    public $adTypesString = '';
 
     /**
      * @var bool
@@ -352,6 +352,6 @@ class Guest
      */
     public function updateAdTypes(): void
     {
-        $this->adTypes = join(', ', $this->adTypes());
+        $this->adTypesString = join(', ', $this->adTypes());
     }
 }

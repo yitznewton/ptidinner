@@ -37,9 +37,9 @@ class AdRepositoryTest extends RepositoryTestCase
         $guest->ads->add($ad);
         $this->em->persist($guest);
 
-        $this->assertEquals('Gold', $guest->adTypes);
+        $this->assertEquals('Gold', $guest->adTypesString);
 
         $this->em->remove($ad);
-        $this->assertEquals('', $guest->adTypes);
+        $this->assertEquals('', $guest->adTypesString);
     }
 }

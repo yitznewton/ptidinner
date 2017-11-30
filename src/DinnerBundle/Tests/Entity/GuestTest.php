@@ -141,7 +141,7 @@ class GuestTest extends TestCase
         $this->guest->ads = new ArrayCollection([$ad1, $ad2]);
         $this->guest->updateAdTypes();
 
-        $this->assertEquals('Gold, Full', $this->guest->adTypes);
+        $this->assertEquals('Gold, Full', $this->guest->adTypesString);
     }
 
     /**
