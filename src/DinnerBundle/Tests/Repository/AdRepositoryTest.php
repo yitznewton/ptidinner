@@ -10,11 +10,6 @@ use function iter\toArray;
 
 class AdRepositoryTest extends RepositoryTestCase
 {
-    static protected function entityClass(): string
-    {
-        return Ad::class;
-    }
-
     /**
      * @test
      */
