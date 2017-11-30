@@ -27,9 +27,6 @@ class AdCreateTransaction
 
     public function __invoke(): void
     {
-        $this->ad->adType->typeAccessionCount++;
-        $this->ad->typeAccession = (new TypeAccession($this->ad))->toString();
-
         foreach ($this->ad->guests as $guest) {
             $guest->ads->add($this->ad);
             $guest->updateAdTypes();
@@ -37,7 +34,6 @@ class AdCreateTransaction
         }
 
         $this->em->persist($this->ad);
-        $this->em->persist($this->ad->adType);
         $this->em->flush();
     }
 }

@@ -19,6 +19,10 @@ services:
     #     arguments:
     #         $someArgument: 'some_value'
 
+    DinnerBundle\EventListener\AdTypeAccession:
+        tags:
+            - { name: doctrine.event_listener, event: onFlush }
+
     twig.extension.text:
         class: Twig_Extensions_Extension_Text
         tags:

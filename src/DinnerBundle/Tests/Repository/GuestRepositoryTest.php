@@ -3,11 +3,12 @@
 namespace DinnerBundle\Tests\Repository;
 
 use DinnerBundle\Entity\Guest;
+use DinnerBundle\Tests\EntityAwareTestCase;
 use nemesis\Doctrine\Hydrator\ArrayHydrator;
 use function iter\map;
 use function iter\toArray;
 
-class GuestRepositoryTest extends RepositoryTestCase
+class GuestRepositoryTest extends EntityAwareTestCase
 {
     /** @var ArrayHydrator */
     private $hydrator;

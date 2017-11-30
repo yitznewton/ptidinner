@@ -1,11 +1,11 @@
 <?php
 
-namespace DinnerBundle\Tests\Repository;
+namespace DinnerBundle\Tests;
 
 use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-abstract class RepositoryTestCase extends KernelTestCase
+abstract class EntityAwareTestCase extends KernelTestCase
 {
     /** @var \Doctrine\ORM\EntityManager */
     protected $em;
