@@ -1,34 +1,25 @@
 <?php
 
+namespace DinnerBundle\Tests\Repository;
+
 use DinnerBundle\Entity\Guest;
-use Doctrine\ORM\Tools\SchemaTool;
+use nemesis\Doctrine\Hydrator\ArrayHydrator;
 use function iter\map;
 use function iter\toArray;
-use nemesis\Doctrine\Hydrator\ArrayHydrator;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class GuestRepositoryTest extends KernelTestCase
+class GuestRepositoryTest extends RepositoryTestCase
 {
-    /** @var \Doctrine\ORM\EntityManager */
-    private $em;
+    /** @var ArrayHydrator */
+    private $hydrator;
 
     /** @var \DinnerBundle\Repository\GuestRepository */
     private $repository;
 
-    /** @var ArrayHydrator */
-    private $hydrator;
-
     public function setUp()
     {
-        self::bootKernel();
-
-        $this->em = self::$kernel->getContainer()->get('doctrine')->getManager();
-        $this->repository = $this->em->getRepository(Guest::class);
+        parent::setUp();
         $this->hydrator = new ArrayHydrator($this->em);
-
-        $metadata = $this->em->getMetadataFactory()->getAllMetadata();
-        $schemaTool = new SchemaTool($this->em);
-        $schemaTool->updateSchema($metadata);
+        $this->repository = $this->em->getRepository(Guest::class);
     }
 
     /**

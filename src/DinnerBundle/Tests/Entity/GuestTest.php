@@ -128,7 +128,7 @@ class GuestTest extends TestCase
     /**
      * @test
      */
-    public function ads_current()
+    public function ad_types()
     {
         $adType1 = new AdType();
         $adType2 = new AdType();
@@ -139,8 +139,9 @@ class GuestTest extends TestCase
         $ad1->adType = $adType1;
         $ad2->adType = $adType2;
         $this->guest->ads = new ArrayCollection([$ad1, $ad2]);
+        $this->guest->updateAdTypes();
 
-        $this->assertEquals('Gold, Full', $this->guest->adsCurrent());
+        $this->assertEquals('Gold, Full', $this->guest->adTypesString);
     }
 
     /**
