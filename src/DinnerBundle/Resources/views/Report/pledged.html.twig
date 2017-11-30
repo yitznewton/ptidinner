@@ -29,6 +29,7 @@
             <th>Paid</th>
             <th>Balance</th>
             <th>Affiliation</th>
+            <th>Ads</th>
         </tr>
         </thead>
         <tbody>
@@ -49,6 +50,7 @@
                 <td class="numeric">{{ numeric.currency(guest.paid) }} </td>
                 <td class="numeric">{{ numeric.currency(guest.balance) }} </td>
                 <td>{{ guest.honoreeString }}</td>
+                <td>{{ guest.adTypesString }}</td>
             </tr>
         {% endfor %}
         </tbody>
