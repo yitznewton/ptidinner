@@ -6,6 +6,8 @@ use DinnerBundle\Form\AdType;
 use DinnerBundle\Transaction\AdCreateTransaction;
 use DinnerBundle\Entity\Ad;
 use DinnerBundle\Entity\Guest;
+use DinnerBundle\Transaction\AdDeleteTransaction;
+use DinnerBundle\Transaction\AdUpdateTransaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -42,7 +44,8 @@ class AdController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            return $this->persistAd($ad);
+            $this->persistAd($ad);
+            return $this->redirectToRoute('ad_edit', array('id' => $ad->getId()));
         }
 
         return $this->render('@Dinner/Ad/new.html.twig', array(
@@ -66,7 +69,8 @@ class AdController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            return $this->persistAd($ad);
+            $this->persistAd($ad);
+            return $this->redirectToRoute('ad_edit', array('id' => $ad->getId()));
         }
 
         return $this->render('@Dinner/Ad/new.html.twig', array(
@@ -90,7 +94,7 @@ class AdController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->updateAd($ad);
 
             return $this->redirectToRoute('ad_edit', array('id' => $ad->getId()));
         }
@@ -115,9 +119,7 @@ class AdController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($ad);
-            $em->flush();
+            $this->deleteAd($ad);
         }
 
         return $this->redirectToRoute('ad_index');
@@ -141,7 +143,17 @@ class AdController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         (new AdCreateTransaction($em, $ad))();
+    }
 
-        return $this->redirectToRoute('ad_edit', array('id' => $ad->getId()));
+    private function updateAd(Ad $ad)
+    {
+        $em = $this->getDoctrine()->getManager();
+        (new AdUpdateTransaction($em, $ad))();
+    }
+
+    private function deleteAd(Ad $ad)
+    {
+        $em = $this->getDoctrine()->getManager();
+        (new AdDeleteTransaction($em, $ad))();
     }
 }
