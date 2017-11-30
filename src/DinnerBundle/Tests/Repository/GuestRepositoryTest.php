@@ -3,14 +3,23 @@
 namespace DinnerBundle\Tests\Repository;
 
 use DinnerBundle\Entity\Guest;
+use nemesis\Doctrine\Hydrator\ArrayHydrator;
 use function iter\map;
 use function iter\toArray;
 
 class GuestRepositoryTest extends RepositoryTestCase
 {
-    static protected function entityClass(): string
+    /** @var ArrayHydrator */
+    private $hydrator;
+
+    /** @var \DinnerBundle\Repository\GuestRepository */
+    private $repository;
+
+    public function setUp()
     {
-        return Guest::class;
+        parent::setUp();
+        $this->hydrator = new ArrayHydrator($this->em);
+        $this->repository = $this->em->getRepository(Guest::class);
     }
 
     /**
@@ -72,4 +81,8 @@ class GuestRepositoryTest extends RepositoryTestCase
         }, $this->repository->pastDonorNoPledge())));
     }
 
+    private function hydrate($data)
+    {
+        return $this->hydrator->hydrate(Guest::class, $data);
+    }
 }
