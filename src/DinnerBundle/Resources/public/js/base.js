@@ -20,6 +20,7 @@
     });
 
     var sentToPrinterInput = document.querySelector('#dinnerbundle_ad_sentToPrinter');
+    var proofFromPrinterCheckbox = document.querySelector('#dinnerbundle_ad_proofFromPrinter');
     var approvedCheckbox = document.querySelector('#dinnerbundle_ad_proofApproved');
 
     iterateSelector('.sent-to-printer-button', function (s) {
@@ -29,8 +30,16 @@
         });
     });
 
+    iterateSelector('.from-printer-button', function (s) {
+        s.addEventListener('click', function () {
+            proofFromPrinterCheckbox.checked = true;
+            this.form.submit();
+        });
+    });
+
     iterateSelector('.approve-button', function (s) {
         s.addEventListener('click', function () {
+            proofFromPrinterCheckbox.checked = true;
             approvedCheckbox.checked = true;
             this.form.submit();
         });
