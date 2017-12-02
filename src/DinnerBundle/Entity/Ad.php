@@ -67,9 +67,9 @@ class Ad
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="proof_from_printer", type="date", nullable=true)
+     * @ORM\Column(name="proof_from_printer", type="boolean")
      */
-    public $proofFromPrinter;
+    public $proofFromPrinter = false;
 
     /**
      * @var boolean
