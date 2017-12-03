@@ -25,7 +25,7 @@
 
     iterateSelector('.sent-to-printer-button', function (s) {
         s.addEventListener('click', function () {
-                sentToPrinterInput.value = (new Date().toISOString().slice(0,10));
+                sentToPrinterInput.value = moment().format('YYYY-MM-DD');
                 this.form.submit();
         });
     });

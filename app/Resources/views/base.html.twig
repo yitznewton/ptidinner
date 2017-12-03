@@ -28,7 +28,8 @@
 
 {% block body %}{% endblock %}
 {% block javascripts %}
-    {% javascripts '@DinnerBundle/Resources/public/js/*.js' %}
+    {% javascripts '@DinnerBundle/Resources/public/js/moment.js'
+                   '@DinnerBundle/Resources/public/js/base.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
