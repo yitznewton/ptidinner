@@ -13,4 +13,17 @@ class AdRepository extends EntityRepository
         );
         return $query->getResult();
     }
+
+    public function needingRebbetzinChanges()
+    {
+        $query = $this->getEntityManager()->createQuery(<<<EOD
+            SELECT a FROM DinnerBundle\Entity\Ad a
+            JOIN a.adType at
+            WHERE a.needsRebbetzinChanges = true
+            ORDER BY at.price DESC, a.typeAccession ASC
+EOD
+        );
+
+        return $query->getResult();
+    }
 }
