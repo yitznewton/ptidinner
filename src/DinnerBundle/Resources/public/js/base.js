@@ -36,8 +36,9 @@
 
     iterateSelector('.sent-to-printer-button', function (s) {
         s.addEventListener('click', function () {
-                sentToPrinterInput.value = moment().format('YYYY-MM-DD');
-                this.form.submit();
+            needsRebbetzinChangesCheckbox.checked = false;
+            sentToPrinterInput.value = moment().format('YYYY-MM-DD');
+            this.form.submit();
         });
     });
 
