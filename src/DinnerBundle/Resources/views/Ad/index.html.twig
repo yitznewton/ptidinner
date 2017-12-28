@@ -2,14 +2,6 @@
 
 {% import _self as adIndex %}
 
-{% macro alertWhenTrue(field, classes) %}
-    {% if field %}
-        <td class="alert {{ classes }}">Y</td>
-    {% else %}
-        <td class="{{ classes }}">n</td>
-    {% endif %}
-{% endmacro %}
-
 {% macro alertWhenFalse(field, classes) %}
     {% if field %}
         <td class="{{ classes }}">Y</td>
@@ -36,7 +28,6 @@
             <th>Type</th>
             <th>Owner(s)</th>
             <th>Copy</th>
-            <th>Needs Rebbetzin changes</th>
             <th>Sent to printer</th>
             <th>Proof rec'd</th>
             <th>Proof app'd</th>
@@ -53,7 +44,6 @@
                 <td>{{ ad.copy | truncate(50) }}</td>
 
 
-                {{ adIndex.alertWhenTrue(ad.needsRebbetzinChanges) }}
                 {{ adIndex.alertWhenFalse(ad.sentToPrinter) }}
                 {{ adIndex.alertWhenFalse(ad.proofFromPrinter) }}
                 {{ adIndex.alertWhenFalse(ad.proofApproved) }}
