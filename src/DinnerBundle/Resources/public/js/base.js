@@ -19,24 +19,12 @@
         });
     });
 
-    var needsRebbetzinChangesCheckbox = document.querySelector('#dinnerbundle_ad_needsRebbetzinChanges');
     var sentToPrinterInput = document.querySelector('#dinnerbundle_ad_sentToPrinter');
     var proofFromPrinterCheckbox = document.querySelector('#dinnerbundle_ad_proofFromPrinter');
     var approvedCheckbox = document.querySelector('#dinnerbundle_ad_proofApproved');
 
-    iterateSelector('.needs-rebbetzin-changes-button', function (s) {
-        s.addEventListener('click', function () {
-            needsRebbetzinChangesCheckbox.checked = true;
-            sentToPrinterInput.value = null;
-            proofFromPrinterCheckbox.checked = false;
-            approvedCheckbox.checked = false;
-            this.form.submit();
-        });
-    });
-
     iterateSelector('.sent-to-printer-button', function (s) {
         s.addEventListener('click', function () {
-            needsRebbetzinChangesCheckbox.checked = false;
             sentToPrinterInput.value = moment().format('YYYY-MM-DD');
             this.form.submit();
         });

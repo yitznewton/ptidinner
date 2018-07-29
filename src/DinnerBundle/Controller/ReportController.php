@@ -19,19 +19,6 @@ class ReportController extends Controller
     }
 
     /**
-     * @Route("/rebbetzin-changes", name="report_needing_rebbetzin_changes")
-     */
-    public function adsNeedingRebbetzinChanges()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $ads = $em->getRepository('DinnerBundle:Ad')->needingRebbetzinChanges();
-
-        return $this->render('DinnerBundle:Report:needing_rebbetzin_changes.html.twig', [
-            'ads' => $ads
-        ]);
-    }
-
-    /**
      * @Route("/seated", name="report_seated")
      */
     public function seatedAction()
