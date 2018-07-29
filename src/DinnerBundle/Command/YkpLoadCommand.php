@@ -15,7 +15,6 @@ class YkpLoadCommand extends AbstractLoadCommand
 
     protected function loader(): Loader
     {
-        return new YKP($this->em());
+        return new YKP($this->em);
     }
-
 }

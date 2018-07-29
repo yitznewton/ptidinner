@@ -8,23 +8,29 @@ use DinnerBundle\Entity\Ad;
 use DinnerBundle\Entity\Guest;
 use DinnerBundle\Transaction\AdDeleteTransaction;
 use DinnerBundle\Transaction\AdUpdateTransaction;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("ads")
  */
 class AdController extends Controller
 {
+    private $em;
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
+
     /**
-     * @Route("/", name="ad_index")
-     * @Method("GET")
+     * @Route("/", name="ad_index", methods="GET")
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $ads = $em->getRepository('DinnerBundle:Ad')->findAll();
+        $ads = $this->em->getRepository('DinnerBundle:Ad')->findAll();
 
         return $this->render('@Dinner/Ad/index.html.twig', array(
             'ads' => $ads,
@@ -32,8 +38,7 @@ class AdController extends Controller
     }
 
     /**
-     * @Route("/new", name="ad_new")
-     * @Method({"GET", "POST"})
+     * @Route("/new", name="ad_new", methods={"GET", "POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -55,8 +60,7 @@ class AdController extends Controller
     }
 
     /**
-     * @Route("/new/guest/{id}", name="ad_new_for_guest")
-     * @Method({"GET", "POST"})
+     * @Route("/new/guest/{id}", name="ad_new_for_guest", methods={"GET", "POST"})
      * @param Request $request
      * @param Guest $guest
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -81,8 +85,7 @@ class AdController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="ad_edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/edit", name="ad_edit", methods={"GET", "POST"})
      * @param Request $request
      * @param Ad $ad
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -107,8 +110,7 @@ class AdController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="ad_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="ad_delete", methods="DELETE")
      * @param Request $request
      * @param Ad $ad
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -141,19 +143,16 @@ class AdController extends Controller
 
     private function persistAd(Ad $ad)
     {
-        $em = $this->getDoctrine()->getManager();
-        (new AdCreateTransaction($em, $ad))();
+        (new AdCreateTransaction($this->em, $ad))();
     }
 
     private function updateAd(Ad $ad)
     {
-        $em = $this->getDoctrine()->getManager();
-        (new AdUpdateTransaction($em, $ad))();
+        (new AdUpdateTransaction($this->em, $ad))();
     }
 
     private function deleteAd(Ad $ad)
     {
-        $em = $this->getDoctrine()->getManager();
-        (new AdDeleteTransaction($em, $ad))();
+        (new AdDeleteTransaction($this->em, $ad))();
     }
 }

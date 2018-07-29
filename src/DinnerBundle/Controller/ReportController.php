@@ -4,13 +4,20 @@ namespace DinnerBundle\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/reports")
  */
 class ReportController extends Controller
 {
+    private $em;
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
+
     /**
      * @Route("/")
      */
@@ -22,59 +29,59 @@ class ReportController extends Controller
     /**
      * @Route("/seated", name="report_seated")
      */
-    public function seatedAction(EntityManagerInterface $em)
+    public function seatedAction()
     {
-        $guests = $em->getRepository('DinnerBundle:Guest')->seated();
+        $guests = $this->em->getRepository('DinnerBundle:Guest')->seated();
 
         return $this->render('DinnerBundle:Report:seated.html.twig', [
             'guests' => $guests,
-            'totals' => $em->getRepository('DinnerBundle:Guest')->totals(),
+            'totals' => $this->em->getRepository('DinnerBundle:Guest')->totals(),
         ]);
     }
 
     /**
      * @Route("/all-pledges", name="report_pledged")
      */
-    public function pledgedAction(EntityManagerInterface $em)
+    public function pledgedAction()
     {
-        $guests = $em->getRepository('DinnerBundle:Guest')->pledged();
+        $guests = $this->em->getRepository('DinnerBundle:Guest')->pledged();
 
         return $this->render('DinnerBundle:Report:pledged.html.twig', [
             'guests' => $guests,
-            'totals' => $em->getRepository('DinnerBundle:Guest')->totals(),
+            'totals' => $this->em->getRepository('DinnerBundle:Guest')->totals(),
         ]);
     }
 
     /**
      * @Route("/pledged-not-paid", name="report_pledged_not_paid")
      */
-    public function pledgedNotPaidAction(EntityManagerInterface $em)
+    public function pledgedNotPaidAction()
     {
-        $guests = $em->getRepository('DinnerBundle:Guest')->pledgedNotPaid();
+        $guests = $this->em->getRepository('DinnerBundle:Guest')->pledgedNotPaid();
 
         return $this->render('DinnerBundle:Report:pledged_not_paid.html.twig', [
             'guests' => $guests,
-            'totals' => $em->getRepository('DinnerBundle:Guest')->totals(),
+            'totals' => $this->em->getRepository('DinnerBundle:Guest')->totals(),
         ]);
     }
 
     /**
      * @Route("/reports/past-donor-no-pledge", name="report_past_donor_no_pledge")
      */
-    public function pastDonorNoPledgeAction(EntityManagerInterface $em)
+    public function pastDonorNoPledgeAction()
     {
-        $guests = $em->getRepository('DinnerBundle:Guest')->pastDonorNoPledge();
+        $guests = $this->em->getRepository('DinnerBundle:Guest')->pastDonorNoPledge();
 
         return $this->render('DinnerBundle:Report:past_donor_no_pledge.html.twig', [
             'guests' => $guests,
-            'totals' => $em->getRepository('DinnerBundle:Guest')->totals(),
+            'totals' => $this->em->getRepository('DinnerBundle:Guest')->totals(),
         ]);
     }
 
-    public function totalsAction(EntityManagerInterface $em)
+    public function totalsAction()
     {
         return $this->render('@Dinner/Report/totals.html.twig', [
-            'totals' => $em->getRepository('DinnerBundle:Guest')->totals(),
+            'totals' => $this->em->getRepository('DinnerBundle:Guest')->totals(),
         ]);
     }
 }

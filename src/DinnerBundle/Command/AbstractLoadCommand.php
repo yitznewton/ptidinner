@@ -3,22 +3,25 @@
 namespace DinnerBundle\Command;
 
 use DinnerBundle\Loader\Loader;
-use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-abstract class AbstractLoadCommand extends ContainerAwareCommand
+abstract class AbstractLoadCommand extends Command
 {
+    protected $em;
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+        parent::__construct();
+    }
+
     protected function configure()
     {
         $this->addArgument('file', InputArgument::REQUIRED);
-    }
-
-    protected function em(): EntityManager
-    {
-        return $this->getContainer()->get('doctrine.orm.entity_manager');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -43,7 +46,7 @@ abstract class AbstractLoadCommand extends ContainerAwareCommand
 
         $output->writeln('Flushing changes');
 
-        $this->em()->flush();
+        $this->em->flush();
     }
 
     abstract protected function loader(): Loader;

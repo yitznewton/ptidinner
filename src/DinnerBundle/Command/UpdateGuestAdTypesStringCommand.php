@@ -3,12 +3,21 @@
 namespace DinnerBundle\Command;
 
 use DinnerBundle\Entity\Guest;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class UpdateGuestAdTypesStringCommand extends ContainerAwareCommand
+class UpdateGuestAdTypesStringCommand extends Command
 {
+    private $em;
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+        parent::__construct();
+    }
+
     protected function configure()
     {
         $this->setName('dinner:update-guest-ad-types');
@@ -16,13 +25,11 @@ class UpdateGuestAdTypesStringCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $em = $this->getContainer()->get('doctrine.orm.entity_manager');
-
         /** @var Guest $guest */
-        foreach ($em->getRepository(Guest::class)->findAll() as $guest) {
+        foreach ($this->em->getRepository(Guest::class)->findAll() as $guest) {
             $guest->updateAdTypes();
         }
 
-        $em->flush();
+        $this->em->flush();
     }
 }

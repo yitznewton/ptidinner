@@ -28,5 +28,35 @@ services:
         tags:
             - { name: twig.extension }
 
+    DinnerBundle\Command\PtiLoadCommand:
+        autowire: true
+
+    DinnerBundle\Command\ResetAdsCommand:
+        autowire: true
+
+    DinnerBundle\Command\UpdateGuestAdTypesStringCommand:
+        autowire: true
+
+    DinnerBundle\Command\YkpLoadCommand:
+        autowire: true
+
+    DinnerBundle\Controller\AdController:
+        autowire: true
+
+    DinnerBundle\Controller\GuestController:
+        autowire: true
+
     DinnerBundle\Controller\ReportController:
-        tags: ['controller.service_arguments']
+        autowire: true
+
+    DinnerBundle\Entity\Ad:
+        autowire: true
+
+    DinnerBundle\Entity\Guest:
+        autowire: true
+
+    UserBundle\Controller\UserController:
+        autowire: true
+
+    UserBundle\Entity\User:
+        autowire: true

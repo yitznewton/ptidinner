@@ -15,6 +15,6 @@ class PtiLoadCommand extends AbstractLoadCommand
 
     protected function loader(): Loader
     {
-        return new PTI($this->em());
+        return new PTI($this->em);
     }
 }
