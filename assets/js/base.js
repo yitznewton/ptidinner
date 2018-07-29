@@ -1,3 +1,7 @@
+require('../css/base.scss');
+
+let moment = require('moment');
+
 (function () {
     let iterateSelector = function(selector, callback) {
         var results = document.querySelectorAll(selector);

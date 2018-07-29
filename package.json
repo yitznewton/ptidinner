@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "moment": "^2.22.2"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.20.1",
+    "node-sass": "^4.9.2",
+    "sass-loader": "^7.0.3"
+  },
+  "scripts": {
+    "postinstall": "yarn run encore production"
+  }
+}

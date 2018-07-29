@@ -14,7 +14,7 @@ abstract class EntityAwareTestCase extends KernelTestCase
     {
         KernelTestCase::bootKernel();
 
-        $this->em = KernelTestCase::$kernel->getContainer()->get('doctrine')->getManager();
+        $this->em = KernelTestCase::$kernel->getContainer()->get('doctrine.orm.entity_manager');
 
         $metadata = $this->em->getMetadataFactory()->getAllMetadata();
         $schemaTool = new SchemaTool($this->em);

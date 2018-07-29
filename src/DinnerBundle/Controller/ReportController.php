@@ -2,6 +2,7 @@
 
 namespace DinnerBundle\Controller;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -21,9 +22,8 @@ class ReportController extends Controller
     /**
      * @Route("/seated", name="report_seated")
      */
-    public function seatedAction()
+    public function seatedAction(EntityManagerInterface $em)
     {
-        $em = $this->getDoctrine()->getManager();
         $guests = $em->getRepository('DinnerBundle:Guest')->seated();
 
         return $this->render('DinnerBundle:Report:seated.html.twig', [
@@ -35,9 +35,8 @@ class ReportController extends Controller
     /**
      * @Route("/all-pledges", name="report_pledged")
      */
-    public function pledgedAction()
+    public function pledgedAction(EntityManagerInterface $em)
     {
-        $em = $this->getDoctrine()->getManager();
         $guests = $em->getRepository('DinnerBundle:Guest')->pledged();
 
         return $this->render('DinnerBundle:Report:pledged.html.twig', [
@@ -49,9 +48,8 @@ class ReportController extends Controller
     /**
      * @Route("/pledged-not-paid", name="report_pledged_not_paid")
      */
-    public function pledgedNotPaidAction()
+    public function pledgedNotPaidAction(EntityManagerInterface $em)
     {
-        $em = $this->getDoctrine()->getManager();
         $guests = $em->getRepository('DinnerBundle:Guest')->pledgedNotPaid();
 
         return $this->render('DinnerBundle:Report:pledged_not_paid.html.twig', [
@@ -63,9 +61,8 @@ class ReportController extends Controller
     /**
      * @Route("/reports/past-donor-no-pledge", name="report_past_donor_no_pledge")
      */
-    public function pastDonorNoPledgeAction()
+    public function pastDonorNoPledgeAction(EntityManagerInterface $em)
     {
-        $em = $this->getDoctrine()->getManager();
         $guests = $em->getRepository('DinnerBundle:Guest')->pastDonorNoPledge();
 
         return $this->render('DinnerBundle:Report:past_donor_no_pledge.html.twig', [
@@ -74,10 +71,8 @@ class ReportController extends Controller
         ]);
     }
 
-    public function totalsAction()
+    public function totalsAction(EntityManagerInterface $em)
     {
-        $em = $this->getDoctrine()->getManager();
-
         return $this->render('@Dinner/Report/totals.html.twig', [
             'totals' => $em->getRepository('DinnerBundle:Guest')->totals(),
         ]);

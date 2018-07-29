@@ -4,12 +4,10 @@
     <meta charset="UTF-8"/>
     <title>{% block title %}PTI Dinner Accounting{% endblock %}</title>
     {% block stylesheets %}
-        {% stylesheets filter="scssphp" "scss/*.scss" %}
-        <link rel="stylesheet" href="{{ asset_url }}"/>
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}"/>
         <link
             href="https://fonts.googleapis.com/css?family=Lato:400,700|Rubik:400,700&amp;subset=hebrew"
             rel="stylesheet">
-        {% endstylesheets %}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
@@ -28,10 +26,7 @@
 
 {% block body %}{% endblock %}
 {% block javascripts %}
-    {% javascripts '@DinnerBundle/Resources/public/js/moment.js'
-                   '@DinnerBundle/Resources/public/js/base.js' %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    <script src="{{ asset('build/app.js') }}"></script>
 {% endblock %}
 </body>
 </html>
