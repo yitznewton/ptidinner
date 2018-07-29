@@ -79,13 +79,6 @@ class Ad
     public $proofApproved = false;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="needs_rebbetzin_changes", type="boolean")
-     */
-    public $needsRebbetzinChanges = false;
-
-    /**
      * @var ArrayCollection<Guest>
      *
      * @ORM\ManyToMany(targetEntity="Guest", inversedBy="ads")

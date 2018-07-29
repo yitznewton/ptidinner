@@ -6,7 +6,6 @@ use DinnerBundle\Entity\Guest;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,7 +21,6 @@ class AdType extends AbstractType
             ->add('adType')
             ->add('copy')
             ->add('note')
-            ->add('needsRebbetzinChanges', CheckboxType::class, ['label' => 'Needs Rebbetzin changes', 'required' => false])
             ->add('sentToPrinter', DateType::class, ['widget' => 'single_text', 'required' => false])
             ->add('proofFromPrinter')
             ->add('proofApproved')
