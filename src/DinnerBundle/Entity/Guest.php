@@ -249,6 +249,13 @@ class Guest
     public $doNotCall = false;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="this_year_only", type="boolean")
+     */
+    public $thisYearOnly = false;
+
+    /**
      * @var ArrayCollection<Ad>
      *
      * @ORM\ManyToMany(targetEntity="Ad", mappedBy="guests")
