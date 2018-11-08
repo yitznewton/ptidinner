@@ -32,7 +32,7 @@ class GuestType extends AbstractType
             ->add('fax')
             ->add('email')
             ->add('referredBy')
-            ->add('pledge2017', NumberType::class, ['label' => 'Current pledge'])
+            ->add('pledge2018', NumberType::class, ['label' => 'Current pledge'])
             ->add('paid')
             ->add('paidSeats')
             ->add('compSeats')

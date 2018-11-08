@@ -23,8 +23,8 @@
                 <th>City</th>
                 <th>Phone</th>
                 <th>Mobile</th>
-                <th>2015</th>
                 <th>2016</th>
+                <th>2017</th>
                 <th>Pledged</th>
                 <th>Paid</th>
                 <th>Balance</th>
@@ -42,7 +42,7 @@
                 <td>{{ guest.city }}</td>
                 <td class="phone">{{ guest.phone }}</td>
                 <td class="phone">{{ guest.mobile }}</td>
-                <td class="numeric">{{ numeric.currency(guest.pledge2015) }}</td>
+                <td class="numeric">{{ numeric.currency(guest.pledge2016) }}</td>
 
                 {% if guest.pledgeIsLow %}
                     <td class="numeric alert">{{ numeric.currency(guest.pledgePrevious) }} </td>
