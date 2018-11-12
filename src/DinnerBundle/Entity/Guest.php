@@ -315,7 +315,7 @@ class Guest
     public function adTypes(): array
     {
         return $this->ads->map(function ($ad) {
-            return (string) $ad->adType;
+            return $ad->adType;
         })->toArray();
     }
 

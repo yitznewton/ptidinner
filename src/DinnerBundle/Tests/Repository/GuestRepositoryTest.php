@@ -82,6 +82,27 @@ class GuestRepositoryTest extends EntityAwareTestCase
         }, $this->repository->pastDonorNoPledge())));
     }
 
+    /**
+     * @test
+     */
+    public function totals()
+    {
+        $paidUpGuest = $this->hydrate(['family_name' => 'Johnson', 'pledge_2018' => 100.0, 'paid' => 100.0, 'paid_seats' => 1]);
+        $unpaidGuest = $this->hydrate(['family_name' => 'Stetson', 'pledge_2018' => 50.0, 'paid' => 0.0, 'comp_seats' => 1]);
+
+        $this->em->persist($paidUpGuest);
+        $this->em->persist($unpaidGuest);
+        $this->em->flush();
+
+        $this->assertEquals([
+            'paid' => 100.0,
+            'pledgeCurrent' => 150.0,
+            'balance' => 50.0,
+            'paidSeats' => 1,
+            'totalSeats' => 2,
+        ], $this->repository->totals());
+    }
+
     private function hydrate($data)
     {
         return $this->hydrator->hydrate(Guest::class, $data);

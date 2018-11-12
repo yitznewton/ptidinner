@@ -112,6 +112,28 @@ class GuestTest extends TestCase
     /**
      * @test
      */
+    public function pledge_paid_when_paid()
+    {
+      $this->guest->pledge2018 = 100;
+      $this->guest->paid = 100;
+
+      $this->assertTrue($this->guest->pledgeIsPaid());
+    }
+
+    /**
+     * @test
+     */
+    public function pledge_paid_when_not_paid()
+    {
+      $this->guest->pledge2018 = 100;
+      $this->guest->paid = 10;
+
+      $this->assertFalse($this->guest->pledgeIsPaid());
+    }
+
+    /**
+     * @test
+     */
     public function honoree_string()
     {
         $honoree1 = new Honoree();

@@ -5,6 +5,9 @@
             "src\/DinnerBundle"
         ],
         "excludes": [
+            "Controller",
+            "Command",
+            "Form",
             "Tests"
         ]
     },
@@ -13,6 +16,16 @@
     },
     "mutators": {
         "@default": true,
+        "GreaterThan": {
+          "ignore": [
+            "DinnerBundle\\Entity\\Ad::truncatedCopy"
+          ]
+        },
+        "MethodCallRemoval": {
+          "ignore": [
+            "DinnerBundle\\EventListener\\AdTypeAccession::updateTypeAccession"
+          ]
+        },
         "PublicVisibility": {
           "ignore": ["*"]
         }
