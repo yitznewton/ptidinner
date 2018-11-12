@@ -16,6 +16,16 @@
     },
     "mutators": {
         "@default": true,
+        "DecrementInteger": {
+          "ignore": [
+            "DinnerBundle\\Repository\\GuestRepository::totals"
+          ]
+        },
+        "OneZeroInteger": {
+          "ignore": [
+            "DinnerBundle\\Repository\\GuestRepository::totals"
+          ]
+        },
         "GreaterThan": {
           "ignore": [
             "DinnerBundle\\Entity\\Ad::truncatedCopy"
