@@ -22,7 +22,12 @@ class MockObjectManager implements ObjectManager
 
     public function isPersisted($test): bool
     {
-        return array_intersect($this->flushed, $test) == $test;
+        return in_array($test, $this->persisted);
+    }
+
+    public function isFlushed($test): bool
+    {
+        return in_array($test, $this->flushed);
     }
 
     public function find($className, $id)
