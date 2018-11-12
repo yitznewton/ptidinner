@@ -9,7 +9,7 @@ cache:
     - $HOME/.composer/cache/files
 
 php:
-  - "7.1"
+  - "7.2"
 
 install:
   - composer install
@@ -18,3 +18,4 @@ install:
 # Run script
 script:
   - ./vendor/bin/phpunit ./src/DinnerBundle/Tests
+  - ./vendor/bin/infection --min-covered-msi=100

@@ -39,4 +39,17 @@ class AdCreateTransactionTest extends TestCase
 
         $this->assertEquals('Full', $guest->adTypesString);
     }
+
+    /** @test */
+    public function flushes() {
+        $em = new MockObjectManager();
+        $guest = new Guest();
+        $guest->familyName = 'Smith';
+        $this->ad->guests->add($guest);
+        $transaction = new AdCreateTransaction($em, $this->ad);
+        $transaction();
+
+        $this->assertTrue($em->isFlushed($this->ad));
+        $this->assertTrue($em->isFlushed($guest));
+    }
 }

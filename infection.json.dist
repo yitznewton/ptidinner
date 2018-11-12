@@ -1,0 +1,43 @@
+{
+    "timeout": 10,
+    "source": {
+        "directories": [
+            "src\/DinnerBundle"
+        ],
+        "excludes": [
+            "Controller",
+            "Command",
+            "Form",
+            "Tests"
+        ]
+    },
+    "logs": {
+        "text": "infection.log"
+    },
+    "mutators": {
+        "@default": true,
+        "DecrementInteger": {
+          "ignore": [
+            "DinnerBundle\\Repository\\GuestRepository::totals"
+          ]
+        },
+        "OneZeroInteger": {
+          "ignore": [
+            "DinnerBundle\\Repository\\GuestRepository::totals"
+          ]
+        },
+        "GreaterThan": {
+          "ignore": [
+            "DinnerBundle\\Entity\\Ad::truncatedCopy"
+          ]
+        },
+        "MethodCallRemoval": {
+          "ignore": [
+            "DinnerBundle\\EventListener\\AdTypeAccession::updateTypeAccession"
+          ]
+        },
+        "PublicVisibility": {
+          "ignore": ["*"]
+        }
+    }
+}
