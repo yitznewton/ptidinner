@@ -25,8 +25,8 @@
             <th>Zip</th>
             <th>Phone</th>
             <th>Mobile</th>
-            <th>2015</th>
             <th>2016</th>
+            <th>2017</th>
             <th>Pledged</th>
             <th>Affiliation</th>
         </tr>
@@ -45,7 +45,7 @@
                 <td>{{ guest.zip }}</td>
                 <td class="phone">{{ guest.phone }}</td>
                 <td class="phone">{{ guest.mobile }}</td>
-                <td class="numeric">{{ numeric.currency(guest.pledge2015) }}</td>
+                <td class="numeric">{{ numeric.currency(guest.pledge2016) }}</td>
                 <td class="numeric">{{ numeric.currency(guest.pledgePrevious) }}</td>
                 <td class="numeric">{{ numeric.currency(guest.pledgeCurrent) }} </td>
                 <td>{{ guest.honoreeString }}</td>

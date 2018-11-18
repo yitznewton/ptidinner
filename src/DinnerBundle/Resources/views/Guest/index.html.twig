@@ -9,9 +9,11 @@
 
     {{ render(controller('DinnerBundle:Report:totals')) }}
 
-    <nav>
-        <div><a href="{{ path('guest_new') }}">Create a new guest</a></div>
-    </nav>
+    {% if is_granted('ROLE_EDITING') %}
+        <nav>
+            <div><a href="{{ path('guest_new') }}">Create a new guest</a></div>
+        </nav>
+    {% endif %}
 
     <table class="index">
         <thead>
@@ -35,7 +37,11 @@
         <tbody>
         {% for guest in guests %}
             <tr>
-                <td><a href="{{ path('guest_edit', { 'id': guest.id }) }}">{{ guest.familyName }}</a></td>
+                {% if is_granted('ROLE_EDITING') %}
+                    <td><a href="{{ path('guest_edit', { 'id': guest.id }) }}">{{ guest.familyName }}</a></td>
+                {% else %}
+                    <td>{{ guest.familyName }}</td>
+                {% endif %}
                 <td>{{ guest.hisName }}</td>
                 <td>{{ guest.herName }}</td>
                 <td>{% if guest.doNotCall %}NOT{% endif %}</td>
