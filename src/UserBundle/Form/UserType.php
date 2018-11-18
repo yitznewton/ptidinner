@@ -9,7 +9,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserType extends AbstractType
 {
-    const ROLES = ['ROLE_CONFIRMED' => 'ROLE_CONFIRMED', 'ROLE_ADMIN' => 'ROLE_ADMIN'];
+    const ROLES = [
+        'ROLE_CONFIRMED' => 'ROLE_CONFIRMED',
+        'ROLE_EDITING' => 'ROLE_EDITING',
+        'ROLE_ADMIN' => 'ROLE_ADMIN'
+    ];
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
