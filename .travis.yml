@@ -15,6 +15,9 @@ install:
   - composer install
   - cp app/config/parameters.yml.dist app/config/parameters.yml
 
+before_script:
+  - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
 # Run script
 script:
   - ./vendor/bin/phpunit ./src/DinnerBundle/Tests
