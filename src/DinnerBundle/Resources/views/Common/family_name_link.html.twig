@@ -1,0 +1,5 @@
+{% if is_granted('ROLE_EDITING') %}
+    <td><a href="{{ path('guest_edit', { 'id': guest.id }) }}">{{ guest.familyName }}</a></td>
+{% else %}
+    <td>{{ guest.familyName }}</td>
+{% endif %}

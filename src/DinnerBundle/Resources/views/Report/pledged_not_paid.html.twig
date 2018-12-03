@@ -35,9 +35,7 @@
         <tbody>
         {% for guest in guests %}
             <tr>
-                <td>
-                    <a href="{{ path('guest_edit', { 'id': guest.id }) }}">{{ guest.familyName }}</a>
-                </td>
+                {{ include('DinnerBundle::common/family_name_link.html.twig', { guest: guest }) }}
                 <td>{{ guest.hisName }}</td>
                 <td>{{ guest.herName }}</td>
                 <td>{{ guest.streetAddress }}</td>
