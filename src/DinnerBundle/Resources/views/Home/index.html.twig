@@ -20,17 +20,15 @@
             </ul>
         </section>
 
-        {% if is_granted('ROLE_EDITING') %}
-            <section>
-                <h2>Reports</h2>
+        <section>
+            <h2>Reports</h2>
 
-                <ul>
-                    <li><a href="{{ path('report_past_donor_no_pledge') }}">Past donor with no current pledge</a></li>
-                    <li><a href="{{ path('report_pledged') }}">All pledges</a></li>
-                    <li><a href="{{ path('report_pledged_not_paid') }}">Pledged and not paid</a></li>
-                    <li><a href="{{ path('report_seated') }}">Seated</a></li>
-                </ul>
-            </section>
-        {% endif %}
+            <ul>
+                <li><a href="{{ path('report_past_donor_no_pledge') }}">Past donor with no current pledge</a></li>
+                <li><a href="{{ path('report_pledged') }}">All pledges</a></li>
+                <li><a href="{{ path('report_pledged_not_paid') }}">Pledged and not paid</a></li>
+                <li><a href="{{ path('report_seated') }}">Seated</a></li>
+            </ul>
+        </section>
     </nav>
 {% endblock %}

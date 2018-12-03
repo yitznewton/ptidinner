@@ -32,6 +32,7 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/css, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/guests/$, role: ROLE_CONFIRMED }
+        - { path: ^/reports, role: ROLE_CONFIRMED }
         - { path: ^/$, role: ROLE_CONFIRMED }
         - { path: ^/users, role: ROLE_ADMIN }
         - { path: ^/, role: ROLE_EDITING }
