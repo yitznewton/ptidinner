@@ -35,7 +35,7 @@
         <tbody>
         {% for guest in guests %}
             <tr>
-                {{ include('DinnerBundle::common/family_name_link.html.twig', { guest: guest }) }}
+                {{ include('DinnerBundle::Common/family_name_link.html.twig', { guest: guest }) }}
                 <td>{{ guest.hisName }}</td>
                 <td>{{ guest.herName }}</td>
                 <td>{{ guest.streetAddress }}</td>
