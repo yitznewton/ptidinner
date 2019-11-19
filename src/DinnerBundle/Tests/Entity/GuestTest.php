@@ -60,8 +60,8 @@ class GuestTest extends TestCase
      */
     public function pledge_low_when_low()
     {
-        $this->guest->pledge2016 = 1000;
-        $this->guest->pledge2017 = 999;
+        $this->guest->pledge2017 = 1000;
+        $this->guest->pledge2018 = 999;
 
         $this->assertTrue($this->guest->pledgeIsLow());
     }
