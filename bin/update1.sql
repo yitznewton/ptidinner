@@ -12,6 +12,8 @@ update guests
   ads_previous=null
 ;
 
+delete from ads;
+
 -- add PP affiliation
 insert into honoree_guest_assoc (honoree_id, guest_id)
     select 5, id from guests where pledge_2016 + pledge_2017 + pledge_2018 > 0
