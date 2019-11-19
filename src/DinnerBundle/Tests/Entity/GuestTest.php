@@ -72,7 +72,7 @@ class GuestTest extends TestCase
     public function pledge_low_when_not_low()
     {
         $this->guest->pledge2017 = 1000;
-        $this->guest->pledge2018 = 1000;
+        $this->guest->pledge2019 = 1000;
 
         $this->assertFalse($this->guest->pledgeIsLow());
     }
@@ -87,7 +87,7 @@ class GuestTest extends TestCase
         $ad = new Ad();
         $ad->adType = $adType;
 
-        $this->guest->pledge2018 = 99;
+        $this->guest->pledge2019 = 99;
         $this->guest->ads = new ArrayCollection([$ad]);
 
         $this->assertTrue($this->guest->pledgeIsLacking());
@@ -103,7 +103,7 @@ class GuestTest extends TestCase
         $ad = new Ad();
         $ad->adType = $adType;
 
-        $this->guest->pledge2018 = 100;
+        $this->guest->pledge2019 = 100;
         $this->guest->ads = new ArrayCollection([$ad]);
 
         $this->assertFalse($this->guest->pledgeIsLacking());
@@ -114,7 +114,7 @@ class GuestTest extends TestCase
      */
     public function pledge_paid_when_paid()
     {
-      $this->guest->pledge2018 = 100;
+      $this->guest->pledge2019 = 100;
       $this->guest->paid = 100;
 
       $this->assertTrue($this->guest->pledgeIsPaid());
@@ -125,7 +125,7 @@ class GuestTest extends TestCase
      */
     public function pledge_paid_when_not_paid()
     {
-      $this->guest->pledge2018 = 100;
+      $this->guest->pledge2019 = 100;
       $this->guest->paid = 10;
 
       $this->assertFalse($this->guest->pledgeIsPaid());

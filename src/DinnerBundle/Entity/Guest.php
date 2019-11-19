@@ -74,13 +74,6 @@ class Guest
     /**
      * @var float
      *
-     * @ORM\Column(name="pledge_2015", type="float", length=8, scale=2)
-     */
-    public $pledge2015 = 0.0;
-
-    /**
-     * @var float
-     *
      * @ORM\Column(name="pledge_2016", type="float", length=8, scale=2)
      */
     public $pledge2016 = 0.0;
@@ -95,9 +88,9 @@ class Guest
     /**
      * @var float
      *
-     * @ORM\Column(name="pledge_2018", type="float", length=8, scale=2)
+     * @ORM\Column(name="pledge_2019", type="float", length=8, scale=2)
      */
-    public $pledge2018 = 0.0;
+    public $pledge2019 = 0.0;
 
     /**
      * @var float
@@ -289,7 +282,7 @@ class Guest
 
     public function pledgeCurrent(): float
     {
-        return $this->pledge2018;
+        return $this->pledge2019;
     }
 
     public function pledgePrevious(): float

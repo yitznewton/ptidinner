@@ -47,10 +47,10 @@ class GuestRepositoryTest extends EntityAwareTestCase
      */
     public function pledged_not_paid()
     {
-        $zeroPledgeGuest = $this->hydrate(['family_name' => 'Abel', 'pledge_2018' => 0.0, 'paid' => 0.0]);
-        $paidUpGuest = $this->hydrate(['family_name' => 'Johnson', 'pledge_2018' => 100.0, 'paid' => 100.0]);
-        $unpaidGuest = $this->hydrate(['family_name' => 'Stetson', 'pledge_2018' => 100.0, 'paid' => 0.0]);
-        $underPaidGuest = $this->hydrate(['family_name' => 'Yterby', 'pledge_2018' => 100.0, 'paid' => 99.0]);
+        $zeroPledgeGuest = $this->hydrate(['family_name' => 'Abel', 'pledge_2019' => 0.0, 'paid' => 0.0]);
+        $paidUpGuest = $this->hydrate(['family_name' => 'Johnson', 'pledge_2019' => 100.0, 'paid' => 100.0]);
+        $unpaidGuest = $this->hydrate(['family_name' => 'Stetson', 'pledge_2019' => 100.0, 'paid' => 0.0]);
+        $underPaidGuest = $this->hydrate(['family_name' => 'Yterby', 'pledge_2019' => 100.0, 'paid' => 99.0]);
 
         $this->em->persist($underPaidGuest);
         $this->em->persist($paidUpGuest);
@@ -68,9 +68,9 @@ class GuestRepositoryTest extends EntityAwareTestCase
      */
     public function past_donor_no_pledge()
     {
-        $neverPledgedGuest = $this->hydrate(['family_name' => 'Abel', 'pledge_2018' => 0.0, 'pledge_2017' => 0.0]);
-        $underPledgedGuest = $this->hydrate(['family_name' => 'Stetson', 'pledge_2018' => 55.0, 'pledge_2017' => 100.0]);
-        $pastDonorNoPledgeGuest = $this->hydrate(['family_name' => 'Yterby', 'pledge_2018' => 0.0, 'pledge_2017' => 100.0]);
+        $neverPledgedGuest = $this->hydrate(['family_name' => 'Abel', 'pledge_2019' => 0.0, 'pledge_2017' => 0.0]);
+        $underPledgedGuest = $this->hydrate(['family_name' => 'Stetson', 'pledge_2019' => 55.0, 'pledge_2017' => 100.0]);
+        $pastDonorNoPledgeGuest = $this->hydrate(['family_name' => 'Yterby', 'pledge_2019' => 0.0, 'pledge_2017' => 100.0]);
 
         $this->em->persist($pastDonorNoPledgeGuest);
         $this->em->persist($underPledgedGuest);
@@ -87,8 +87,8 @@ class GuestRepositoryTest extends EntityAwareTestCase
      */
     public function totals()
     {
-        $paidUpGuest = $this->hydrate(['family_name' => 'Johnson', 'pledge_2018' => 100.0, 'paid' => 100.0, 'paid_seats' => 1]);
-        $unpaidGuest = $this->hydrate(['family_name' => 'Stetson', 'pledge_2018' => 50.0, 'paid' => 0.0, 'comp_seats' => 1]);
+        $paidUpGuest = $this->hydrate(['family_name' => 'Johnson', 'pledge_2019' => 100.0, 'paid' => 100.0, 'paid_seats' => 1]);
+        $unpaidGuest = $this->hydrate(['family_name' => 'Stetson', 'pledge_2019' => 50.0, 'paid' => 0.0, 'comp_seats' => 1]);
 
         $this->em->persist($paidUpGuest);
         $this->em->persist($unpaidGuest);

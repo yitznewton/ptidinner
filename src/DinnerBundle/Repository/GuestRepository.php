@@ -21,8 +21,8 @@ class GuestRepository extends EntityRepository
     {
         $query = $this->getEntityManager()->createQuery(<<<EOD
             SELECT SUM(g.paid) AS paid,
-            SUM(g.pledge2018) AS pledgeCurrent,
-            SUM(g.pledge2018)-SUM(g.paid) AS balance,
+            SUM(g.pledge2019) AS pledgeCurrent,
+            SUM(g.pledge2019)-SUM(g.paid) AS balance,
             SUM(g.paidSeats) AS paidSeats,
             SUM(g.paidSeats)+SUM(g.compSeats) AS totalSeats
             FROM DinnerBundle\Entity\Guest g
@@ -48,7 +48,7 @@ EOD
     {
         $query = $this->getEntityManager()->createQuery(<<<EOD
             SELECT g FROM DinnerBundle\Entity\Guest g
-            WHERE g.pledge2018 > 0
+            WHERE g.pledge2019 > 0
             ORDER BY g.familyName, g.hisName, g.herName
 EOD
         );
@@ -60,7 +60,7 @@ EOD
     {
         $query = $this->getEntityManager()->createQuery(<<<EOD
             SELECT g FROM DinnerBundle\Entity\Guest g
-            WHERE g.paid < g.pledge2018
+            WHERE g.paid < g.pledge2019
             ORDER BY g.familyName, g.hisName, g.herName
 EOD
         );
@@ -72,7 +72,7 @@ EOD
     {
         $query = $this->getEntityManager()->createQuery(<<<EOD
             SELECT g FROM DinnerBundle\Entity\Guest g
-            WHERE g.pledge2018 = 0
+            WHERE g.pledge2019 = 0
             AND g.pledge2016 + g.pledge2017 > 0
             ORDER BY g.familyName, g.hisName, g.herName
 EOD
