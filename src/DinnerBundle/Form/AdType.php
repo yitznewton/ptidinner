@@ -19,7 +19,7 @@ class AdType extends AbstractType
     {
         $builder
             ->add('adType')
-            ->add('copy')
+            ->add('copy', null, ['attr' => ['spellcheck' => 'true']])
             ->add('note')
             ->add('sentToPrinter', DateType::class, ['widget' => 'single_text', 'required' => false])
             ->add('proofFromPrinter')
